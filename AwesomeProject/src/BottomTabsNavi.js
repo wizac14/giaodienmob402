@@ -1,0 +1,135 @@
+import { StyleSheet, Text, View, Image, Touchable } from 'react-native'
+import React from 'react'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import HomeScreen from './HomeScreen';
+import NotificationScreen from './NotificationScreen';
+import PlusScreen from './PlusScreen';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import ScheduleScreen from './ScheduleScreen';
+import TrangChu from './TrangChu';
+
+const Tab = createBottomTabNavigator();
+const BottomTabsNavi = () => {
+  return (
+    <Tab.Navigator screenOptions={{
+      headerShown: false,
+      tabBarShowLabel: false,
+      tabBarStyle: {
+        position: 'relative',
+        backgroundColor: '#ffffff',
+        borderRadius: 10,
+        bottom: 10,
+        height: 60,
+        ...styles.shadow
+      }
+    }}
+    // screenOptions={({ route }) => ({
+    //   tabBarIcon: ({ focused, color, size }) => {
+    //     let iconName;
+
+    //     if (route.name === 'Home') {
+    //       iconName = focused
+    //         ? 'menu'
+    //         : 'menu';
+    //     } else if (route.name === 'Notification') {
+    //       iconName = focused ? 'list-outline' : 'home-outline';
+    //     } else if (route.name === 'Plus') {
+    //       iconName = focused ? 'add-outline' : 'home-outline';
+    //     }
+
+    //     // You can return any component that you like here!
+    //     return <Ionicons name={iconName} size={30} color={color} />;
+    //   },
+    //   tabBarActiveTintColor: 'tomato',
+    //   tabBarInactiveTintColor: 'gray',
+    // })}
+    >
+      <Tab.Screen name='Home' component={TrangChu} options={{
+        tabBarIcon: ({ focused }) => (
+          <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+            <Image
+              source={require('../assets/images/homee).png')}
+              resizeMode='contain'
+              style={{
+                width: 20,
+                height: 20,
+                tintColor: focused ? '#e32f45' : '#748c94'
+              }}
+            />
+            <Text style={{ color: focused ? '#e32f45' : '#748c94', fontSize: 14 }}>TRANG CHỦ</Text>
+          </View>
+        )
+      }} />
+
+      <Tab.Screen name='Schedule' component={ScheduleScreen} options={{
+        tabBarBadge: '!',
+        tabBarIcon: ({ focused }) => (
+          <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+            <Image
+              source={require('../assets/images/schedule.png')}
+              resizeMode='contain'
+              style={{
+                width: 20,
+                height: 20,
+                tintColor: focused ? '#e32f45' : '#748c94'
+              }}
+            />
+            <Text style={{ color: focused ? '#e32f45' : '#748c94', fontSize: 14 }}>LỊCH</Text>
+          </View>
+        )
+      }} />
+
+
+      <Tab.Screen name='Notification' component={NotificationScreen} options={{
+        tabBarIcon: ({ focused }) => (
+          <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+            <Image
+              source={require('../assets/images/notification.png')}
+              resizeMode='contain'
+              style={{
+                width: 20,
+                height: 20,
+                tintColor: focused ? '#e32f45' : '#748c94'
+              }}
+            />
+            <Text style={{ color: focused ? '#e32f45' : '#748c94', fontSize: 14 }}>THÔNG BÁO</Text>
+          </View>
+        )
+      }} />
+
+
+
+      <Tab.Screen name='Plus' component={PlusScreen} options={{
+        tabBarIcon: ({ focused }) => (
+          <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+            <Image
+              source={require('../assets/images/clue.png')}
+              resizeMode='contain'
+              style={{
+                width: 20,
+                height: 20,
+                tintColor: focused ? '#e32f45' : '#748c94'
+              }}
+            />
+            <Text style={{ color: focused ? '#e32f45' : '#748c94', fontSize: 14 }}>UNKNOW</Text>
+          </View>
+        )
+      }} />
+    </Tab.Navigator>
+  )
+}
+
+export default BottomTabsNavi
+
+const styles = StyleSheet.create({
+  shadow: {
+    shadowColor: 'red',
+    shadowOffset: {
+      width: 0,
+      height: 10
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5,
+    elevation: 15,
+  }
+})
