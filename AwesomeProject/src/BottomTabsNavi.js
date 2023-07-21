@@ -18,45 +18,25 @@ const BottomTabsNavi = () => {
         position: 'relative',
         backgroundColor: '#ffffff',
         borderRadius: 10,
-        bottom: 10,
+        bottom: 5,
         height: 60,
         ...styles.shadow
       }
     }}
-    // screenOptions={({ route }) => ({
-    //   tabBarIcon: ({ focused, color, size }) => {
-    //     let iconName;
-
-    //     if (route.name === 'Home') {
-    //       iconName = focused
-    //         ? 'menu'
-    //         : 'menu';
-    //     } else if (route.name === 'Notification') {
-    //       iconName = focused ? 'list-outline' : 'home-outline';
-    //     } else if (route.name === 'Plus') {
-    //       iconName = focused ? 'add-outline' : 'home-outline';
-    //     }
-
-    //     // You can return any component that you like here!
-    //     return <Ionicons name={iconName} size={30} color={color} />;
-    //   },
-    //   tabBarActiveTintColor: 'tomato',
-    //   tabBarInactiveTintColor: 'gray',
-    // })}
     >
       <Tab.Screen name='Home' component={TrangChu} options={{
+        // tabBarActiveBackgroundColor: 'black',
         tabBarIcon: ({ focused }) => (
-          <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <Image
               source={require('../assets/images/homee).png')}
               resizeMode='contain'
               style={{
-                width: 20,
-                height: 20,
+                width: 30,
+                height: 30,
                 tintColor: focused ? '#e32f45' : '#748c94'
               }}
             />
-            <Text style={{ color: focused ? '#e32f45' : '#748c94', fontSize: 14 }}>TRANG CHỦ</Text>
           </View>
         )
       }} />
@@ -64,17 +44,16 @@ const BottomTabsNavi = () => {
       <Tab.Screen name='Schedule' component={ScheduleScreen} options={{
         tabBarBadge: '!',
         tabBarIcon: ({ focused }) => (
-          <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <Image
               source={require('../assets/images/schedule.png')}
               resizeMode='contain'
               style={{
-                width: 20,
-                height: 20,
+                width: 25,
+                height: 25,
                 tintColor: focused ? '#e32f45' : '#748c94'
               }}
             />
-            <Text style={{ color: focused ? '#e32f45' : '#748c94', fontSize: 14 }}>LỊCH</Text>
           </View>
         )
       }} />
@@ -82,17 +61,16 @@ const BottomTabsNavi = () => {
 
       <Tab.Screen name='Notification' component={NotificationScreen} options={{
         tabBarIcon: ({ focused }) => (
-          <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <Image
               source={require('../assets/images/notification.png')}
               resizeMode='contain'
               style={{
-                width: 20,
-                height: 20,
+                width: 25,
+                height: 25,
                 tintColor: focused ? '#e32f45' : '#748c94'
               }}
             />
-            <Text style={{ color: focused ? '#e32f45' : '#748c94', fontSize: 14 }}>THÔNG BÁO</Text>
           </View>
         )
       }} />
@@ -101,17 +79,16 @@ const BottomTabsNavi = () => {
 
       <Tab.Screen name='Plus' component={PlusScreen} options={{
         tabBarIcon: ({ focused }) => (
-          <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <Image
               source={require('../assets/images/clue.png')}
               resizeMode='contain'
               style={{
-                width: 20,
-                height: 20,
+                width: 25,
+                height: 25,
                 tintColor: focused ? '#e32f45' : '#748c94'
               }}
             />
-            <Text style={{ color: focused ? '#e32f45' : '#748c94', fontSize: 14 }}>UNKNOW</Text>
           </View>
         )
       }} />
@@ -130,6 +107,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.5,
-    elevation: 15,
+    elevation: 5,
   }
 })

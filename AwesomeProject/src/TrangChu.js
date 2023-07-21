@@ -46,9 +46,6 @@ export default TrangChu1
 
 const styles = StyleSheet.create({
     body: {
-        width: 400,
-        height: 800,
-        borderRadius: 40,
         backgroundColor: '#FFF',
         shadowColor: '#52006A',
         elevation: 20,
@@ -60,6 +57,7 @@ const styles = StyleSheet.create({
         top: 12,
         borderRadius: 30,
         backgroundColor: '#FF7A00',
+        elevation: 20
     },
     Sun: {
         position: 'absolute',
@@ -174,7 +172,7 @@ const styles = StyleSheet.create({
         top: 95,
         borderRadius: 15,
         backgroundColor: '#FFFFFF',
-        elevation: 20,
+        elevation: 10,
         justifyContent: 'center',
     },
     ve: {
@@ -217,7 +215,7 @@ const styles = StyleSheet.create({
         bottom: 65,
         borderRadius: 15,
         backgroundColor: '#FFFFFF',
-        elevation: 20,
+        elevation: 10,
         justifyContent: 'center',
     },
     btn3: {
@@ -227,7 +225,7 @@ const styles = StyleSheet.create({
         bottom: 40,
         borderRadius: 15,
         backgroundColor: '#FFFFFF',
-        elevation: 20,
+        elevation: 10,
         justifyContent: 'center',
     },
     btn4: {
@@ -237,7 +235,7 @@ const styles = StyleSheet.create({
         bottom: 200,
         borderRadius: 15,
         backgroundColor: '#FFFFFF',
-        elevation: 20,
+        elevation: 10,
         justifyContent: 'center',
     },
     txtChucnang: {

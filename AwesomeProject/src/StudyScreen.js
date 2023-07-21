@@ -4,7 +4,7 @@ import { Image, ScrollView, StyleSheet, View } from 'react-native';
 
 
 const StudyScreen = () => (
-  <ScrollView >
+  <ScrollView style={styles.container}>
     <View style={styles.container}>
       <Card style={styles.itemCard}>
         <Card.Content style={styles.cardView}>
