@@ -1,50 +1,79 @@
-import { StyleSheet, Text, View, Image, TextInput, Pressable } from 'react-native'
-import React from 'react'
+import { StyleSheet, SafeAreaView, FlatList, Text, View, Image, TextInput, Pressable, ImageBackground, Animated, useWindowDimensions } from 'react-native'
+import React, { useLayoutEffect } from 'react'
+import { useNavigation } from "@react-navigation/native";
+import { tweets } from "../data/tweet";
+import Tweet from "../components/Tweet";
 
-const TrangChu1 = () => {
+
+const TrangChu = () => {
+    const navigation = useNavigation();
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => (
+                <Pressable onPress={() => navigation.openDrawer()}>
+                    <Image
+                        source={require("../assets/images/fpl.png")}
+                        style={{ width: 40, height: 40, borderRadius: 100, marginLeft: 15 }}
+                    />
+                </Pressable>
+            ),
+        });
+    }, []);
     return (
-        <View style={styles.body}>
-            <View style={styles.head}>
-                <Text style={styles.txtHello}>Hello,</Text>
-                <Text style={styles.txtgood}>good Morning</Text>
-                <Image style={styles.Sun} source={require('../assets/images/Circle.png')} />
-                <View style={styles.search}>
-                    <Image style={styles.imgsearch} source={require('../assets/images/Group.png')} />
-                    <Image style={styles.imgPolygon} source={require('../assets/images/Polygon1.png')} />
-                    <TextInput style={styles.txtSearch} placeholder='Tìm kiếm'></TextInput>
-                    <Text style={styles.txtAll}>All</Text>
+        <SafeAreaView>
+
+            <View style={styles.body}>
+                <View style={styles.head}>
+                    <Text style={styles.txtHello}>Hello,</Text>
+                    <Text style={styles.txtgood}>good Morning</Text>
+                    <Image style={styles.Sun} source={require('../assets/images/Circle.png')} />
+                    <View style={styles.search}>
+                        <Image style={styles.imgsearch} source={require('../assets/images/Group.png')} />
+                        <Image style={styles.imgPolygon} source={require('../assets/images/Polygon1.png')} />
+                        <TextInput style={styles.txtSearch} placeholder='Tìm kiếm'></TextInput>
+                        <Text style={styles.txtAll}>All</Text>
+                    </View>
+                    <Pressable style={styles.thongbao} onPress={() => navigation.navigate("News")}>
+                        <Image style={styles.chuong} source={require('../assets/images/chuong.png')} />
+                    </Pressable>
+                    <Text style={styles.txtKham}>Khám phá thêm</Text>
                 </View>
-                <View style={styles.thongbao}>
-                    <Image style={styles.chuong} source={require('../assets/images/chuong.png')} />
-                </View>
-                <Text style={styles.txtKham}>Khám phá thêm</Text>
+
+                <Pressable style={styles.btn1} onPress={() => navigation.navigate("Study")}>
+                    <Image style={styles.ve} source={require('../assets/images/ve.png')} />
+                    <Text style={styles.txtlich}>Lịch học</Text>
+                    <Text style={styles.khoahoc}>20 Courses</Text>
+                </Pressable>
+                <Pressable style={styles.btn2} onPress={() => navigation.navigate("Test")}>
+                    <Image style={styles.ve} source={require('../assets/images/nghiencuu.png')} />
+                    <Text style={styles.txtlich}>Lịch thi</Text>
+                    <Text style={styles.khoahoc}>15 Courses</Text>
+                </Pressable>
+                <Pressable style={styles.btn3} onPress={() => navigation.navigate("News")}>
+                    <Image style={styles.ve} source={require('../assets/images/thongbao.png')} />
+                    <Text style={styles.txtlich}>Tin tức</Text>
+                    <Text style={styles.khoahoc}>25 tin mới</Text>
+                </Pressable>
+                <Pressable style={styles.btn4} onPress={() => navigation.navigate("Plus")}>
+                    <Image style={styles.ve} source={require('../assets/images/xaydung.png')} />
+                    <Text style={styles.txtChucnang}>Chức năng mở rộng</Text>
+                </Pressable>
+
             </View>
-            <Pressable style={styles.btn1}>
-            <Image style={styles.ve} source={require('../assets/images/ve.png')} />
-            <Text style={styles.txtlich}>Lịch học</Text>
-            <Text style={styles.khoahoc}>20 Courses</Text>
-            </Pressable>
-            <Pressable style={styles.btn2}>
-            <Image style={styles.ve} source={require('../assets/images/nghiencuu.png')} />
-            <Text style={styles.txtlich}>Lịch thi</Text>
-            <Text style={styles.khoahoc}>15 Courses</Text>
-            </Pressable>
-            <Pressable style={styles.btn3}>
-            <Image style={styles.ve} source={require('../assets/images/thongbao.png')} />
-            <Text style={styles.txtlich}>Thông báo</Text>
-            <Text style={styles.khoahoc}>25 tin mới</Text>
-            </Pressable>
-            <Pressable style={styles.btn4}>
-            <Image style={styles.ve} source={require('../assets/images/xaydung.png')} />
-            <Text style={styles.txtChucnang}>Chức năng mở rộng</Text>
-            </Pressable>
-        </View>
+
+        </SafeAreaView>
+
     )
 }
 
-export default TrangChu1
+export default TrangChu
 
 const styles = StyleSheet.create({
+    container: {
+        justifyContent: 'center',
+        marginTop: 70,
+    },
     body: {
         backgroundColor: '#FFF',
         shadowColor: '#52006A',
@@ -176,8 +205,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     ve: {
-        bottom:50,
-        left:35,
+        bottom: 50,
+        left: 35,
         position: 'absolute',
         width: 94,
         height: 94,
@@ -192,8 +221,8 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         fontFamily: 'Inter',
         lineHeight: 20,
-        top:60,
-        left:20,
+        top: 60,
+        left: 20,
     },
     khoahoc: {
         width: 100,
@@ -205,8 +234,8 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         fontFamily: 'Inter',
         lineHeight: 22.5,
-        top:48,
-        left:20,
+        top: 48,
+        left: 20,
     },
     btn2: {
         width: 165,
@@ -248,8 +277,22 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         fontFamily: 'Inter',
         lineHeight: 20,
-        top:60,
-        left:30,
-        textAlign:"center"
+        top: 60,
+        left: 30,
+        textAlign: "center"
     },
+    title: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginStart: 50,
+
+    },
+    viewTitle: {
+        borderWidth: 1,
+        borderColor: '#FF7A00',
+        borderRadius: 10,
+        padding: 5,
+        justifyContent: 'center'
+
+    }
 })

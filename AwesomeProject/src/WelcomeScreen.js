@@ -21,7 +21,7 @@ const WelcomeScreen = ({ navigation }) => {
         />
       </View>
       <Text style={styles.WelcomeText}>
-        Hãy cùng nhau khám phá ứng dụng học tập
+        Hãy cùng nhau khám phá {"\n"}ứng dụng học tập
         <Text style={styles.FPLText}> My FPL</Text>
       </Text>
 
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   WelcomeText: {
     color: 'black',
     fontWeight: 'bold',
-    fontSize: 32,
+    fontSize: 24,
     alignItems: 'center',
     marginLeft: 10,
     marginTop: 30,
