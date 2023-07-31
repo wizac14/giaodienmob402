@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         bottom: 5,
     },
     txtHello: {
-        width: 80,
+        width: "auto",
         height: 60,
         top: 20,
         left: 26,
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         lineHeight: 32.5,
     },
     txtgood: {
-        width: 160,
+        width: 'auto',
         height: 60,
         bottom: 10,
         left: 26,
@@ -99,6 +99,10 @@ const styles = StyleSheet.create({
         top: 5,
         borderRadius: 100,
         backgroundColor: '#FEFDFE',
+        elevation: 20,
+        // flexDirection: 'row',
+        // justifyContent: 'center',
+        // alignItems: 'center',
     },
     imgsearch: {
         position: 'absolute',
