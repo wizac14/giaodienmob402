@@ -2,9 +2,13 @@ import {
   StyleSheet, Text, View, TextInput, Button
   , TouchableOpacity, Image, Pressable
 } from 'react-native'
-import React from 'react'
-
-const LoginScreen = ({navigation}) => {
+import React, {useContext} from 'react'
+import { UserContext } from './UserContext'
+const LoginScreen = () => {
+    const {user, setUser} = useContext(UserContext)  ;
+    const testContext = () => {
+        setUser('tung')
+    }
   return (
       <View style={styles.container}>
           <Text style={styles.txtMyFPL}>MyFPL</Text>
@@ -15,7 +19,7 @@ const LoginScreen = ({navigation}) => {
               <Text style={styles.txtPassword}>Password</Text>
               <TextInput style={styles.txtInputEmail} placeholder="Nhập password" />
               <Text style={styles.txtQuenMatKhau}>Quên mật khẩu?</Text>
-              <TouchableOpacity style={styles.btnDangNhap} onPress={() => navigation.navigate("BottomTab")}>
+              <TouchableOpacity style={styles.btnDangNhap} onPress={() => testContext()}>
                   <Text style={styles.txtLogin}>Login</Text>
               </TouchableOpacity>
               <View style={{width:'100%',height:64,justifyContent:'center',alignItems:'center'}} >
