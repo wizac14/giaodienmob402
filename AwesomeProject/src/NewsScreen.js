@@ -24,7 +24,6 @@ const MyComponent = () => {
   const { width: windowWidth } = useWindowDimensions();
   return (
     <SafeAreaView style={styles.container}>
-
       <ScrollView>
         <View style={styles.scrollContainer}>
           <ScrollView

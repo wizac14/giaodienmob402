@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text, View, Image } from 'react-native'
-import React, { useRef, useEffect } from 'react'
+import React, {useRef, useEffect} from 'react'
 
 const WelcomeScreen = ({ navigation }) => {
   return (
@@ -21,7 +21,7 @@ const WelcomeScreen = ({ navigation }) => {
         />
       </View>
       <Text style={styles.WelcomeText}>
-        Hãy cùng nhau khám phá ứng dụng học tập
+        Hãy cùng nhau khám phá {"\n"}ứng dụng học tập
         <Text style={styles.FPLText}> My FPL</Text>
       </Text>
 
@@ -38,8 +38,7 @@ export default WelcomeScreen
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     backgroundColor: '#FFff',
     justifyContent: 'center',
     alignItems: 'center'
@@ -67,7 +66,7 @@ const styles = StyleSheet.create({
   WelcomeText: {
     color: 'black',
     fontWeight: 'bold',
-    fontSize: 22,
+    fontSize: 24,
     alignItems: 'center',
     marginLeft: 10,
     marginTop: 30,
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 10,
     width: 180,
-    height: 200,
+    height: 300,
     borderRadius: 30,
   },
 
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 50,
     width: 180,
-    height: 200,
+    height: 300,
     borderRadius: 30,
   },
 
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: -20,
     width: 180,
-    height: 200,
+    height: 300,
     borderRadius: 60,
   },
 
@@ -104,7 +103,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 40,
     width: 180,
-    height: 200,
+    height: 250,
     borderRadius: 40,
   },
 

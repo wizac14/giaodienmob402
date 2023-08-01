@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Image, Touchable } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import HomeScreen from './HomeScreen';
-import NotificationScreen from './NotificationScreen';
+import HomeScreen from './SettingScreen';
+import NotificationScreen from './NewsScreen';
 import PlusScreen from './PlusScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ScheduleScreen from './ScheduleScreen';
@@ -18,7 +18,6 @@ const BottomTabsNavi = () => {
         position: 'relative',
         backgroundColor: '#ffffff',
         borderRadius: 10,
-        bottom: 5,
         height: 60,
         ...styles.shadow
       }
@@ -49,25 +48,8 @@ const BottomTabsNavi = () => {
               source={require('../assets/images/schedule.png')}
               resizeMode='contain'
               style={{
-                width: 25,
-                height: 25,
-                tintColor: focused ? '#e32f45' : '#748c94'
-              }}
-            />
-          </View>
-        )
-      }} />
-
-
-      <Tab.Screen name='Notification' component={NotificationScreen} options={{
-        tabBarIcon: ({ focused }) => (
-          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-            <Image
-              source={require('../assets/images/notification.png')}
-              resizeMode='contain'
-              style={{
-                width: 25,
-                height: 25,
+                width: 30,
+                height: 30,
                 tintColor: focused ? '#e32f45' : '#748c94'
               }}
             />
