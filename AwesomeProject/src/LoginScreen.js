@@ -2,22 +2,44 @@ import {
   StyleSheet, Text, View, TextInput, Button
   , TouchableOpacity, Image, Pressable
 } from 'react-native'
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import { UserContext } from './UserContext'
+import { login } from './Heper/Service'
 const LoginScreen = () => {
     const {user, setUser} = useContext(UserContext)  ;
-    const testContext = () => {
-        setUser('tung')
+    const {id_user, setid_user} = useContext(UserContext)  ;
+    const [email, setemail] = useState("msinisbury2");
+    const [password, setpassword] = useState("aR9@Y@C5S");
+    const testContext = async () => {
+        try {
+            const result = await login(email, password);
+            console.log('login result', result);
+            if (result.status === true) {
+                console.log('login result', result);
+                console.log('login result', result.data.username);
+                setUser(result.data.username);
+                setid_user(result.data._id);
+                // console.log('id_user',id_user);
+                // console.log('user',user);
+                // console.log(result.data.username, result.data.password);
+                //   await AsyncStorage.setItem('token', result.data.token);
+                return true;
+            }
+        } catch (error) {
+            console.log('login error', error);
+        }
+        return false;
     }
+
   return (
       <View style={styles.container}>
           <Text style={styles.txtMyFPL}>MyFPL</Text>
           <View style={styles.viewCon}>
               <Text style={styles.txtDangNhap}>Đăng nhập</Text>
               <Text style={styles.txtEmail}>Email</Text>
-              <TextInput style={styles.txtInputEmail} placeholder="Nhập email" />
+              <TextInput style={styles.txtInputEmail} placeholder="Nhập email" onChangeText={setemail} value= {email} />
               <Text style={styles.txtPassword}>Password</Text>
-              <TextInput style={styles.txtInputEmail} placeholder="Nhập password" />
+              <TextInput style={styles.txtInputEmail} placeholder="Nhập password" onChangeText={setpassword} value={password} />
               <Text style={styles.txtQuenMatKhau}>Quên mật khẩu?</Text>
               <TouchableOpacity style={styles.btnDangNhap} onPress={() => testContext()}>
                   <Text style={styles.txtLogin}>Login</Text>
