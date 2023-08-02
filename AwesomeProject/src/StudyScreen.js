@@ -2,13 +2,15 @@ import * as React from 'react';
 import { Card, Button, ProgressBar, MD3Colors, Avatar, Text } from 'react-native-paper';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { getLH, getUser } from './Heper/Service';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { UserContext } from './UserContext';
 const StudyScreen = (props) => {
-
+const {id_user, setid_user} = useContext(UserContext)  ;
   const [LH, setLH] = useState([]);
   const ongetLH = async () => {
+    // console.log('id_user',id_user);
     const LH = await getLH();
     console.log(LH.data);
     setLH(LH.data);

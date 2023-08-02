@@ -1,6 +1,17 @@
 const {default: AxiosInstance} = require('../Heper/AxiosHelper');
 
-
+export const getLHUser = async (id_user) => {
+    const body= {
+        id_user : id_user
+    }
+    try {
+     const response = await AxiosInstance().get('/lichhoc/user',body);
+     // console.log(response.data);
+     return response;
+    }catch(error){
+        console.log("error",error);
+    }
+ }
 
 export const getLH = async () => {
    try {
@@ -51,3 +62,22 @@ export const getLTUser = async (id) => {
     }
  }
 
+// export const getNews = async () => {
+//     try {
+//         const response = await AxiosInstance().get('tin-tuc');
+//         console.log("tin tức service"+response);
+//         return response.data;
+//     } catch (error) {
+//         console.log("error", error);
+//     }
+// }
+
+export const getNews = async () => {
+    try {
+     const response = await AxiosInstance().get('/tin-tuc');
+     console.log("78 : >>>>>>>>>>" , response.data);
+     return response.data;
+    }catch(error){
+        console.log("error",error);
+    }
+ }

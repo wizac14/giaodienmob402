@@ -10,25 +10,29 @@ const LoginScreen = () => {
     const {id_user, setid_user} = useContext(UserContext)  ;
     const [email, setemail] = useState("msinisbury2");
     const [password, setpassword] = useState("aR9@Y@C5S");
+    const [token, settoken] = useState("");
     const testContext = async () => {
         try {
             const result = await login(email, password);
             console.log('login result', result);
             if (result.status === true) {
-                console.log('login result', result);
                 console.log('login result', result.data.username);
+                console.log('login result', result.data._id);
+
                 setUser(result.data.username);
                 setid_user(result.data._id);
+
+              
                 // console.log('id_user',id_user);
                 // console.log('user',user);
                 // console.log(result.data.username, result.data.password);
                 //   await AsyncStorage.setItem('token', result.data.token);
-                return true;
+               
             }
         } catch (error) {
             console.log('login error', error);
         }
-        return false;
+        
     }
 
   return (
