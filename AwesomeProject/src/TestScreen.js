@@ -1,19 +1,28 @@
 import * as React from 'react';
 import { Card, Button, ProgressBar, MD3Colors, Avatar, Text } from 'react-native-paper';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { getLH, getLT } from './Heper/Service';
+import { getLTUser } from './Heper/Service';
+import { UserContext } from './UserContext';
 
 const TestScreen = (props) => {
   const [LH, setLH] = useState([]);
-  const onGetLT = async () => {
-    const LT = await getLT();
-    console.log(LT.data);
-    setLT(LT.data);
-  }
+  const { id_user, setid_user } = useContext(UserContext);
+  // const onGetLT = async () => {
+  //   const LT = await getLT();
+  //   console.log(LT.data);
+  //   setLT(LT.data);
+  // }
   const [LT, setLT] = useState([]);
+
+  const ongetLTUser = async () => {
+    // console.log('id_user',id_user);
+    const L = await getLTUser(id_user);
+    // console.log(LT.data);
+    setLT(L.data);
+  }
 
   renderItem = ({ item }) => {
     return (
@@ -38,7 +47,8 @@ const TestScreen = (props) => {
     )
   }
   useEffect(() => {
-    onGetLT();
+    // onGetLT();
+    ongetLTUser();
   }
 
     , [])
