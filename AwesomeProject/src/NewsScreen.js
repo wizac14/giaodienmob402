@@ -2,7 +2,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import React from 'react';
 import { FlatList } from 'react-native';
 import { useRef, useState, useEffect } from 'react';
-import { Avatar, Button, Card, Text  } from 'react-native-paper';
+import { Avatar, Button, Card, Text } from 'react-native-paper';
 import {
   SafeAreaView,
   ScrollView,
@@ -29,7 +29,7 @@ const MyComponent = (props) => {
   const scrollX = useRef(new Animated.Value(0)).current;
   const { width: windowWidth } = useWindowDimensions();
 
- const [neww, setneww] = useState([]);
+  const [neww, setneww] = useState([]);
 
   const ongetNews = async () => {
     const news = await getNews();
@@ -40,9 +40,9 @@ const MyComponent = (props) => {
   useEffect(() => {
     ongetNews();
   }, [])
- const batloi =() => {
-  console.log("bat loi")
- }
+  const batloi = () => {
+    console.log("bat loi")
+  }
   const DATA = [
     {
       _id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -52,36 +52,34 @@ const MyComponent = (props) => {
     }]
   renderItems = ({ item }) => {
     <Text> {item.title} </Text>
-   {batloi}
-  //   <Card style={{ elevation: 5, margin: 5 }}>
-  //   <Card.Title style={{}} title="FPT Polytechnic" subtitle=" Thông báo" left={LeftContent} > {item.title} </Card.Title>
-  //   <Card.Cover source={{ uri: 'https://scontent.fsgn6-2.fna.fbcdn.net/v/t1.15752-9/360065323_827582868965291_2179207238637473248_n.png?_nc_cat=108&cb=99be929b-59f725be&ccb=1-7&_nc_sid=ae9488&_nc_ohc=q05RBvyqK0wAX8Hctbi&_nc_ht=scontent.fsgn6-2.fna&oh=03_AdTJroxbnOLTE7vI55HgdmBMleinr1ttHggbe94SYtEDwA&oe=64D47926' }}
-  //     style={{ margin: 10 }} />
-  //   <Card.Content>
-  //     <Text variant="titleLarge"> {item.content} </Text>
-  //     <Text variant="bodyMedium"> {item.date} </Text>
-  //   </Card.Content>
-  // </Card> 
+    { batloi }
+    //  
   }
 
   return (
     <GestureHandlerRootView style={styles.container}>
 
-    <FlatList 
-        data={DATA}
-        renderItem={renderItems}
-        keyExtractor={(item) => item._id}
-        refreshing={false}
-        showsVerticalScrollIndicator={false}
-        
-        >
-  
-
-        </FlatList>
+      <ScrollView>
 
         {
-          
+          neww.map((item, index) => {
+            return (
+              <Card style={{ elevation: 5, margin: 5 }}>
+                <Card.Title style={{}} title="FPT Polytechnic" subtitle=" Thông báo" left={LeftContent} > {item.title} </Card.Title>
+                <Card.Cover source={{ uri: 'https://scontent.fsgn6-2.fna.fbcdn.net/v/t1.15752-9/360065323_827582868965291_2179207238637473248_n.png?_nc_cat=108&cb=99be929b-59f725be&ccb=1-7&_nc_sid=ae9488&_nc_ohc=q05RBvyqK0wAX8Hctbi&_nc_ht=scontent.fsgn6-2.fna&oh=03_AdTJroxbnOLTE7vI55HgdmBMleinr1ttHggbe94SYtEDwA&oe=64D47926' }}
+                  style={{ margin: 10 }} />
+                <Card.Content>
+                  <Text variant="titleLarge"> {item.content} </Text>
+                  <Text variant="bodyMedium"> {item.date} </Text>
+                </Card.Content>
+              </Card>
+            )
+          }
+          )
         }
+      </ScrollView>
+
+
     </GestureHandlerRootView>
   )
 };
