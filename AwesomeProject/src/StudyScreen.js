@@ -6,35 +6,23 @@ import { FlatList } from 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { UserContext } from './UserContext';
 import { getLHUser } from './Heper/Service';
-import { getLHDate } from './Heper/Service';
-import moment from 'moment';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 const StudyScreen = (props) => {
   const { id_user, setid_user } = useContext(UserContext);
   const [LH, setLH] = useState([]);
-  const [today, setToday] = useState('');
+
+  // const ongetLH = async () => {
+  //   // console.log('id_user',id_user);
+  //   const LH = await getLH();
+  //   console.log(LH.data);
+  //   setLH(LH.data);
+  // }
   const ongetLHUser = async () => {
     // console.log('id_user',id_user);
     const L = await getLHUser(id_user);
     // console.log(LH.data);
     setLH(L.data);
   }
-
- const ongetLHDate = async (id_user, date) => {
-
-    const L = await getLHDate(id_user, date);
-    // console.log(LH.data);
-    setLH(L.data);
-  }
-
-
-  const handlePress = () => {
-    const date = moment().format('MM/DD/YYYY');
-    setToday(date);
-    console.log('Today is:', date);
-    ongetLHDate(id_user ,date);
-  }
-
+  
 
 
   rederItem = ({ item }) => {
@@ -68,13 +56,7 @@ const StudyScreen = (props) => {
 
   return (
     <GestureHandlerRootView style={styles.container2}>
-      
-          <TouchableOpacity onPress={handlePress} style={styles.getDay}>
-            <Text>Get Today's Date</Text>
-          </TouchableOpacity>
-        
       <View style={styles.trendall}>
-       
         <FlatList
           style={styles.container2}
           data={LH}
@@ -117,14 +99,5 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     // backgroundColor: 'yellow',
-  },
-  getDay: {
-    backgroundColor: 'red',
-    width: 100,
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    margin: 10,
   },
 })
