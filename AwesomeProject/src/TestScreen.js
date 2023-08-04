@@ -39,7 +39,7 @@ const TestScreen = (props) => {
     console.log('Today is:', date);
     ongetLTDate(id_user, date);
   }
-
+//.....
   renderItem = ({ item }) => {
     return (
       <View style={styles.container}>
