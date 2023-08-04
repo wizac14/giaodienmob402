@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, Button, ProgressBar, MD3Colors, Avatar, Text } from 'react-native-paper';
+import { Card,TextInput, Button, ProgressBar, MD3Colors, Avatar, Text } from 'react-native-paper';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { useState, useEffect, useContext } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
@@ -13,6 +13,7 @@ const StudyScreen = (props) => {
   const { id_user, setid_user } = useContext(UserContext);
   const [LH, setLH] = useState([]);
   const [today, setToday] = useState('');
+  const [indate, setindate] = useState('')
   const ongetLHUser = async () => {
     // console.log('id_user',id_user);
     const L = await getLHUser(id_user);
@@ -35,7 +36,10 @@ const StudyScreen = (props) => {
     ongetLHDate(id_user ,date);
   }
 
-
+  const handlePress2 = () => {
+    console.log('Today is:', indate);
+    ongetLHDate(id_user, indate);
+  }
 
   rederItem = ({ item }) => {
     return (
@@ -69,9 +73,16 @@ const StudyScreen = (props) => {
   return (
     <GestureHandlerRootView style={styles.container2}>
       
-          <TouchableOpacity onPress={handlePress} style={styles.getDay}>
-            <Text>Get Today's Date</Text>
-          </TouchableOpacity>
+      <TouchableOpacity onPress={handlePress} style={styles.getDay}>
+        <Text style={styles.text}>Lấy lịch học của ngày hôm nay</Text>
+      </TouchableOpacity>
+     
+        <TextInput style={styles.textinput}
+         placeholder='Nhập ngày cần tìm MM/DD/YYYY'
+         onChangeText={setindate}
+         onEndEditing={handlePress2}
+        >
+        </TextInput>
         
       <View style={styles.trendall}>
        
@@ -120,11 +131,28 @@ const styles = StyleSheet.create({
   },
   getDay: {
     backgroundColor: 'red',
-    width: 100,
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
     margin: 10,
+  },
+  textinput: {
+    backgroundColor: 'white',
+    height: 50,
+    borderRadius: 10,
+    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 12,
+  
+  },
+  text: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+    
   },
 })
