@@ -161,4 +161,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     
   },
+  emptyContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  emptyText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+  },
 })
