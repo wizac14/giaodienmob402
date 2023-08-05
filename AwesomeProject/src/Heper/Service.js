@@ -129,3 +129,32 @@ export const LayDiem = async (id_user, game_id,diem) => {
     }
     
 }
+export const getCard = async (id_user) => {
+    try {
+        const body =
+        {
+            id_user: id_user,
+        }
+        const response = await AxiosInstance().post('/card/user', body);
+        console.log("lấy card theo user ", response);
+        return response;
+    } catch (error) {
+        console.log("error", error);
+    }
+}
+export const getLHDate = async (id_user, ngayHoc) => {
+    try {
+        const body =
+        {
+            id_user: id_user,
+            ngayHoc: ngayHoc
+
+        }
+
+        const response = await AxiosInstance().post('/lichhoc/user/find', body);
+        console.log("lấy lịch học theo ngày ", response);
+        return response;
+    } catch (error) {
+        console.log("error", error);
+    }
+}

@@ -15,6 +15,7 @@ import TweetDetailScreen from './TweetDetailsScreen'
 import { useContext } from 'react'
 import { UserContext } from './UserContext'
 import { Game } from './Game'
+import Tet from './Tet'
 
 //Tab Bottom
 const Tab = createBottomTabNavigator();
@@ -111,6 +112,9 @@ function HomeStackGroup() {
       <HomeStack.Screen
         name='Game'
         component={Game} />
+      <HomeStack.Screen
+        name='TheSV'
+        component={Tet} />
 
     </HomeStack.Navigator>
   )

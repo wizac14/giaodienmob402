@@ -160,8 +160,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   avt: {
-
-
+    height: 110,
     width: 100,
     margin: 10,
   },

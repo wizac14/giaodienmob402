@@ -8,8 +8,12 @@ export const Game = () => {
     const navigation = useNavigation();
     //Giá trị id_user bạn muốn lọc
     const { user, id_user } = useContext(UserContext)
+    const [thongBao, setthongBao] = useState(false);
     const [listgame, setlistgame] = useState([]);
     let game_id = "64cd01d4b0eba2045e9b543e";
+    const thongBaoDaChoi = () => {
+        <Text style={{}}>Kết quả của bạn đã được lưu</Text>
+    }
     const OnGetGame = async () => {
         // lay du lieu nguoi da choi
         const resplay = await getPlayed();
@@ -17,7 +21,9 @@ export const Game = () => {
         const filteredData = resplay.filter(item => item.id_user === targetIdUser);
         console.log("filteredData", filteredData);
         if (filteredData.length > 0) {
+            setthongBao(true);
             console.log("Sinh viên này đã tham gia");
+
         } else {
             // lay du lieu tro choi
             const res = await getGame();
@@ -30,7 +36,7 @@ export const Game = () => {
         const res = await LayDiem(id_user, game_id, diem);
         navigation.navigate('TabGroup');
         console.log("Lấy điểm thành công", res);
-     }
+    }
     useEffect(() => {
         OnGetGame();
     }, [])
@@ -57,7 +63,7 @@ export const Game = () => {
         // setCurrentQuestionIndex(0);
         // setScore(0);
         // setShowResult(false);
-        
+
     };
 
     const renderQuestion = () => {
@@ -65,7 +71,23 @@ export const Game = () => {
             return (
                 <View style={styles.container}>
                     <Text style={styles.resultText}>Kết quả: {score}/{gameData.length}</Text>
-                    <Button title="Lấy điểm" onPress={()=>OnLayDiem(id_user,game_id,score)} />
+                    <Button title="Lấy điểm" onPress={() => OnLayDiem(id_user, game_id, score)} />
+                </View>
+            );
+        }
+        if (thongBao) {
+            return (
+                <View style={{
+                    width: "100%",
+                    height: "100%",
+                    justifyContent: "center", 
+                    alignItems: 'center',
+                }} >
+                    <Text style={{
+                        fontSize: 24,
+                        fontWeight: 'bold',
+                        color: 'black'
+                    }}>Kết quả của bạn đã được lưu 🐝</Text>
                 </View>
             );
         }
