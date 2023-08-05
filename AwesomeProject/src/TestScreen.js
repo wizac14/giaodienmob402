@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Card, Button, ProgressBar, MD3Colors, Avatar, Text } from 'react-native-paper';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { useState, useEffect, useContext } from 'react';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, TextInput } from 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { getLTUser } from './Heper/Service';
 import { UserContext } from './UserContext';
@@ -21,6 +21,7 @@ const TestScreen = (props) => {
   // }
   const [LT, setLT] = useState([]);
   const [today, setToday] = useState('');
+  const [indate, setindate] = useState('')
   const ongetLTUser = async () => {
     // console.log('id_user',id_user);
     const L = await getLTUser(id_user);
@@ -39,7 +40,18 @@ const TestScreen = (props) => {
     console.log('Today is:', date);
     ongetLTDate(id_user, date);
   }
-
+  const handlePress2 = () => {
+    console.log('Today is:', indate);
+    ongetLTDate(id_user, indate);
+  }
+  const renderEmptyComponent = () => {
+    return (
+      <View style={styles.emptyContainer}>
+        <Text style={styles.emptyText}>Hôm nay không có hoạt động</Text>
+      </View>
+    );
+  };
+//.....
   renderItem = ({ item }) => {
     return (
       <View style={styles.container}>
@@ -71,17 +83,24 @@ const TestScreen = (props) => {
   return (
     <GestureHandlerRootView style={styles.container2}>
       <TouchableOpacity onPress={handlePress} style={styles.getDay}>
-        <Text>Get Today's Date</Text>
+        <Text style={styles.text}>Lấy lịch học của ngày hôm nay</Text>
       </TouchableOpacity>
       <View style={styles.trendall}>
+        <TextInput style={styles.textinput}
+         placeholder='Nhập ngày cần tìm MM/DD/YYYY'
+         onChangeText={setindate}
+         onEndEditing={handlePress2}
+        >
+        </TextInput>
         <FlatList
-          style={styles.container2}
+         
           data={LT}
           renderItem={renderItem}
           keyExtractor={item => item._id}
           onRefresh={() => onGetLT()}
           refreshing={false}
           showsVerticalScrollIndicator={false}
+          ListEmptyComponent={renderEmptyComponent} // Thêm ListEmptyComponent vào FlatList
         >
         </FlatList>
       </View>
@@ -100,12 +119,13 @@ const styles = StyleSheet.create({
   },
   getDay: {
     backgroundColor: 'red',
-    width: 100,
+    color: 'white',
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
     margin: 10,
+    
   },
   cardView: {
     margin: 5,
@@ -122,5 +142,33 @@ const styles = StyleSheet.create({
   view1: {
     flex: 1,
     margin: 10,
-  }
+  },
+  textinput: {
+    backgroundColor: 'white',
+   
+    height: 50,
+    borderRadius: 10,
+    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  text: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+    
+  },
+  emptyContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  emptyText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+  },
 })

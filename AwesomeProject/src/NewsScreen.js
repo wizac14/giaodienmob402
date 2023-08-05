@@ -48,6 +48,7 @@ const MyComponent = (props) => {
   return (
     <GestureHandlerRootView style={styles.container}>
 
+    
       <ScrollView 
       showsVerticalScrollIndicator={false}
       horizontal={false}
@@ -74,6 +75,7 @@ const MyComponent = (props) => {
 
 
     </GestureHandlerRootView>
+    
   )
 };
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, Button, ProgressBar, MD3Colors, Avatar, Text } from 'react-native-paper';
+import { Card,TextInput, Button, ProgressBar, MD3Colors, Avatar, Text } from 'react-native-paper';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { useState, useEffect, useContext } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
@@ -13,6 +13,7 @@ const StudyScreen = (props) => {
   const { id_user, setid_user } = useContext(UserContext);
   const [LH, setLH] = useState([]);
   const [today, setToday] = useState('');
+  const [indate, setindate] = useState('')
   const ongetLHUser = async () => {
     // console.log('id_user',id_user);
     const L = await getLHUser(id_user);
@@ -35,16 +36,25 @@ const StudyScreen = (props) => {
     ongetLHDate(id_user ,date);
   }
 
-
-
+  const handlePress2 = () => {
+    console.log('Today is:', indate);
+    ongetLHDate(id_user, indate);
+  }
+  const renderEmptyComponent = () => {
+    return (
+      <View style={styles.emptyContainer}>
+        <Text style={styles.emptyText}>Hôm nay không có hoạt động</Text>
+      </View>
+    );
+  };
   rederItem = ({ item }) => {
     return (
       <View style={styles.container}>
         <Card style={styles.itemCard}>
           <Card.Content style={styles.cardView}>
             <View style={styles.view1}>
-              <Card.Content style={{ backgroundColor: 'white', borderRadius: 15, borderWidth: 1, borderColor: '#FF7A00', padding: 10 }}>
-                <Text style={styles.title} variant="bodyMedium"> {item.ca} </Text>
+              <Card.Content style={{ backgroundColor: 'white', borderRadius: 15, borderWidth: 1, borderColor: '#FF7A00' }}>
+                <Text variant="bodyMedium"> {item.ca} </Text>
                 <Text variant="bodyMedium"> {item.diaDiem} </Text>
                 {/* <Text variant="bodyMedium"> </Text> */}
               </Card.Content>
@@ -69,13 +79,21 @@ const StudyScreen = (props) => {
   return (
     <GestureHandlerRootView style={styles.container2}>
       
-          <TouchableOpacity onPress={handlePress} style={styles.getDay}>
-            <Text style={styles.textToday}>Get Today's Date</Text>
-          </TouchableOpacity>
+      <TouchableOpacity onPress={handlePress} style={styles.getDay}>
+        <Text style={styles.text}>Lấy lịch học của ngày hôm nay</Text>
+      </TouchableOpacity>
+     
+        <TextInput style={styles.textinput}
+         placeholder='Nhập ngày cần tìm MM/DD/YYYY'
+         onChangeText={setindate}
+         onEndEditing={handlePress2}
+        >
+        </TextInput>
         
       <View style={styles.trendall}>
        
         <FlatList
+        
           style={styles.container2}
           data={LH}
           renderItem={rederItem}
@@ -83,6 +101,7 @@ const StudyScreen = (props) => {
           onRefresh={() => ongetLH()}
           refreshing={false}
           showsVerticalScrollIndicator={false}
+          ListEmptyComponent={renderEmptyComponent} // Thêm ListEmptyComponent vào FlatList
         >
         </FlatList>
       </View>
@@ -94,26 +113,7 @@ export default StudyScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
 
-  container2: {
-    
-      width: '100%',
-      height: '100%',
-  },
-
-  getDay: {
-    alignContent: 'center',
-    backgroundColor: '#FF7A00',
-    borderWidth: 1,
-    borderRadius: 15,
-  },
-
-  textToday: {
-    textAlign: 'center',
-    fontSize: 16,
-    fontFamily: 'Popins',
-    fontWeight: 'bold'
   },
 
   cardView: {
@@ -121,29 +121,59 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderRadius: 15,
     backgroundColor: 'white',
-    borderWidth: 1,
-    borderColor: 'green',
 
   },
 
   itemCard: {
     backgroundColor: '#ECECEC'
-    
   },
 
   view1: {
     flex: 1,
     margin: 10,
   },
+  container2: {
+    width: '100%',
+    height: '100%',
+    
+   
 
-  item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    // backgroundColor: 'yellow',
   },
-  title: {
+  getDay: {
+    backgroundColor: 'red',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    margin: 10,
+  },
+  textinput: {
+    backgroundColor: 'white',
+    height: 50,
+    borderRadius: 10,
+    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 14
+    fontSize: 12,
+  
+  },
+  text: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+    
+  },
+  emptyContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+  },
+  emptyText: {
+    color: "black",
+    fontSize: 20,
+    fontWeight: "bold",
   },
 })

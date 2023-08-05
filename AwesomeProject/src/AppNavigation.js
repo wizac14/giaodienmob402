@@ -3,6 +3,8 @@ import WelcomeScreen from './WelcomeScreen'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
+
+import ThongBao from './ThongBao'
 import LoginScreen from './LoginScreen'
 import StudyScreen from './StudyScreen'
 import TestScreen from './TestScreen'
@@ -12,7 +14,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import TrangChu from './TrangChu'
 import TweetDetailScreen from './TweetDetailsScreen'
 import { useContext } from 'react'
-import {UserContext} from './UserContext'
+import { UserContext } from './UserContext'
+import { Game } from './Game'
+import Tet from './Tet'
 
 //Tab Bottom
 const Tab = createBottomTabNavigator();
@@ -72,6 +76,10 @@ function TabGroup() {
           </View>
         )
       }} />
+      <Tab.Screen
+        name='ThongBao'
+        component={ThongBao}
+        options={{ headerShown: false }} />
     </Tab.Navigator>
   )
 }
@@ -80,13 +88,13 @@ function TabGroup() {
 const HomeStack = createNativeStackNavigator();
 function HomeStackGroup() {
   return (
-    
+
     <HomeStack.Navigator initialRouteName='Welcome'>
-        {/* <HomeStack.Screen
+      {/* <HomeStack.Screen
         name='Login'
         component={LoginScreen}
         options={{ headerShown: false }} /> */}
-        {/* <HomeStack.Screen 
+      {/* <HomeStack.Screen 
         name='Welcome' 
         component={WelcomeScreen}
         options={{ headerShown: false }}/> */}
@@ -99,27 +107,31 @@ function HomeStackGroup() {
         component={TweetDetailScreen} />
       <HomeStack.Screen
         name='News'
-        component={NotificationScreen} 
-        options={{headerTitleAlign: 'center'}}/>
+        component={NotificationScreen} />
       <HomeStack.Screen
-        name='Lịch Học'
-        component={StudyScreen}
-        options={{headerTitleAlign: 'center'}} />
+        name='Study'
+        component={StudyScreen} />
       <HomeStack.Screen
-        name='Lịch Thi'
-        component={TestScreen}
-        options={{headerTitleAlign: 'center'}} />
+        name='Test'
+        component={TestScreen} />
+      <HomeStack.Screen
+        name='Game'
+        component={Game} />
+      <HomeStack.Screen
+        name='TheSV'
+        component={Tet} />
+
     </HomeStack.Navigator>
   )
 }
 
 const AppNavigation = () => {
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext)
   return (
     <NavigationContainer>
       {
-        user ? <HomeStackGroup/>
-            : <LoginScreen/>
+        user ? <HomeStackGroup />
+          : <LoginScreen />
       }
     </NavigationContainer>
   )
