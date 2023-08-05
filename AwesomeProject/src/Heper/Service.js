@@ -61,7 +61,15 @@ export const getLTUser = async (id_user) => {
         console.log("error", error);
     }
 }
-
+export const getTinTucapi = async () => {
+    try {
+        const response = await AxiosInstance().get('/tin-tucap');
+        console.log("lấy tin tức ", response);
+        return response;
+    } catch (error) {
+        console.log("error", error);
+    }
+}
 export const getNews = async () => {
     try {
         const response = await AxiosInstance().get('/tin-tuc');
