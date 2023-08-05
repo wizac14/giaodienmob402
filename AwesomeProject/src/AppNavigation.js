@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
 
+import ThongBao from './ThongBao'
 import LoginScreen from './LoginScreen'
 import StudyScreen from './StudyScreen'
 import TestScreen from './TestScreen'
@@ -75,6 +76,10 @@ function TabGroup() {
           </View>
         )
       }} />
+      <Tab.Screen
+        name='ThongBao'
+        component={ThongBao}
+        options={{ headerShown: false }} />
     </Tab.Navigator>
   )
 }

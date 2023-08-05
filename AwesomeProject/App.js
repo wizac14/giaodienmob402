@@ -25,7 +25,7 @@ import GameTest from './src/GameTest'
 const App = () => {
   return (
     // <SafeAreaView style={{ flex: 1 }}>
-    //     <Game/>
+    //     <ThongBao/>
     // </SafeAreaView>
 
     <UserProvider>

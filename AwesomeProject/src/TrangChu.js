@@ -43,17 +43,17 @@ const TrangChu = () => {
                 <Pressable style={styles.btn1} onPress={() => navigation.navigate("Study")}>
                     <Image style={styles.ve} source={require('../assets/images/ve.png')} />
                     <Text style={styles.txtlich}>Lịch học</Text>
-                    <Text style={styles.khoahoc}>20 Courses</Text>
+                    {/* <Text style={styles.khoahoc}>20 Courses</Text> */}
                 </Pressable>
                 <Pressable style={styles.btn2} onPress={() => navigation.navigate("Test")}>
                     <Image style={styles.ve} source={require('../assets/images/nghiencuu.png')} />
                     <Text style={styles.txtlich}>Lịch thi</Text>
-                    <Text style={styles.khoahoc}>15 Courses</Text>
+                    {/* <Text style={styles.khoahoc}>15 Courses</Text> */}
                 </Pressable>
                 <Pressable style={styles.btn3} onPress={() => navigation.navigate("Game")}>
                     <Image style={styles.ve} source={require('../assets/images/thongbao.png')} />
-                    <Text style={styles.txtlich}>Tin tức</Text>
-                    <Text style={styles.khoahoc}>25 tin mới</Text>
+                    <Text style={styles.txtlich}>Game</Text>
+                    {/* <Text style={styles.khoahoc}>25 tin mới</Text> */}
                 </Pressable>
                 <Pressable style={styles.btn4} onPress={() => navigation.navigate("TheSV")}>
                     <Image style={styles.ve} source={require('../assets/images/xaydung.png')} />
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
         height: 94,
     },
     txtlich: {
-        width: 100,
+        width: 120,
         height: 30,
         fontSize: 18,
         fontStyle: 'normal',
@@ -227,6 +227,7 @@ const styles = StyleSheet.create({
         lineHeight: 20,
         top: 60,
         left: 20,
+        textAlign: "center"
     },
     khoahoc: {
         width: 100,
