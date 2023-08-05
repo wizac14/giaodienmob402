@@ -44,7 +44,13 @@ const TestScreen = (props) => {
     console.log('Today is:', indate);
     ongetLTDate(id_user, indate);
   }
-
+  const renderEmptyComponent = () => {
+    return (
+      <View style={styles.emptyContainer}>
+        <Text style={styles.emptyText}>Hôm nay không có hoạt động</Text>
+      </View>
+    );
+  };
 //.....
   renderItem = ({ item }) => {
     return (
@@ -94,6 +100,7 @@ const TestScreen = (props) => {
           onRefresh={() => onGetLT()}
           refreshing={false}
           showsVerticalScrollIndicator={false}
+          ListEmptyComponent={renderEmptyComponent} // Thêm ListEmptyComponent vào FlatList
         >
         </FlatList>
       </View>
@@ -153,5 +160,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     
+  },
+  emptyContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+  },
+  emptyText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
   },
 })

@@ -57,7 +57,7 @@ const TrangChu = () => {
                 </Pressable>
                 <Pressable style={styles.btn4} onPress={() => navigation.navigate("Tet")}>
                     <Image style={styles.ve} source={require('../assets/images/xaydung.png')} />
-                    <Text style={styles.txtChucnang}>Chức năng mở rộng</Text>
+                    <Text style={styles.txtChucnang}>Thẻ sinh viên online</Text>
                 </Pressable>
 
             </View>
