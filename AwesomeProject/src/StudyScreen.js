@@ -40,7 +40,13 @@ const StudyScreen = (props) => {
     console.log('Today is:', indate);
     ongetLHDate(id_user, indate);
   }
-
+  const renderEmptyComponent = () => {
+    return (
+      <View style={styles.emptyContainer}>
+        <Text style={styles.emptyText}>Hôm nay không có hoạt động</Text>
+      </View>
+    );
+  };
   rederItem = ({ item }) => {
     return (
       <View style={styles.container}>
@@ -87,6 +93,7 @@ const StudyScreen = (props) => {
       <View style={styles.trendall}>
        
         <FlatList
+        
           style={styles.container2}
           data={LH}
           renderItem={rederItem}
@@ -94,6 +101,7 @@ const StudyScreen = (props) => {
           onRefresh={() => ongetLH()}
           refreshing={false}
           showsVerticalScrollIndicator={false}
+          ListEmptyComponent={renderEmptyComponent} // Thêm ListEmptyComponent vào FlatList
         >
         </FlatList>
       </View>
@@ -127,6 +135,9 @@ const styles = StyleSheet.create({
   container2: {
     width: '100%',
     height: '100%',
+    
+   
+
     // backgroundColor: 'yellow',
   },
   getDay: {
@@ -154,5 +165,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     
+  },
+  emptyContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+  },
+  emptyText: {
+    color: "black",
+    fontSize: 20,
+    fontWeight: "bold",
   },
 })
