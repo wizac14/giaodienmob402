@@ -109,6 +109,7 @@ function HomeStackGroup() {
         name='Test'
         component={TestScreen} />
       <HomeStack.Screen
+        options={{ headerShown: false }}
         name='Tet'
         component={Tet} />
     </HomeStack.Navigator>
