@@ -55,7 +55,7 @@ const TrangChu = () => {
                     <Text style={styles.txtlich}>Tin tức</Text>
                     <Text style={styles.khoahoc}>25 tin mới</Text>
                 </Pressable>
-                <Pressable style={styles.btn4} onPress={() => navigation.navigate("Plus")}>
+                <Pressable style={styles.btn4} onPress={() => navigation.navigate("Tet")}>
                     <Image style={styles.ve} source={require('../assets/images/xaydung.png')} />
                     <Text style={styles.txtChucnang}>Chức năng mở rộng</Text>
                 </Pressable>

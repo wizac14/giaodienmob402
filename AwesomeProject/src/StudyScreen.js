@@ -1,31 +1,45 @@
 import * as React from 'react';
-import { Card, Button, ProgressBar, MD3Colors, Avatar, Text } from 'react-native-paper';
+import { Card,TextInput, Button, ProgressBar, MD3Colors, Avatar, Text } from 'react-native-paper';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { useState, useEffect, useContext } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { UserContext } from './UserContext';
 import { getLHUser } from './Heper/Service';
+import { getLHDate } from './Heper/Service';
+import moment from 'moment';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const StudyScreen = (props) => {
   const { id_user, setid_user } = useContext(UserContext);
-  
-  // const id_user = "64b7aaa1c792d40deef11a44"
   const [LH, setLH] = useState([]);
-
-  // const ongetLH = async () => {
-  //   // console.log('id_user',id_user);
-  //   const LH = await getLH();
-  //   console.log(LH.data);
-  //   setLH(LH.data);
-  // }
+  const [today, setToday] = useState('');
+  const [indate, setindate] = useState('')
   const ongetLHUser = async () => {
     // console.log('id_user',id_user);
     const L = await getLHUser(id_user);
     // console.log(LH.data);
     setLH(L.data);
   }
-  
 
+ const ongetLHDate = async (id_user, date) => {
+
+    const L = await getLHDate(id_user, date);
+    // console.log(LH.data);
+    setLH(L.data);
+  }
+
+
+  const handlePress = () => {
+    const date = moment().format('MM/DD/YYYY');
+    setToday(date);
+    console.log('Today is:', date);
+    ongetLHDate(id_user ,date);
+  }
+
+  const handlePress2 = () => {
+    console.log('Today is:', indate);
+    ongetLHDate(id_user, indate);
+  }
 
   rederItem = ({ item }) => {
     return (
@@ -58,7 +72,20 @@ const StudyScreen = (props) => {
 
   return (
     <GestureHandlerRootView style={styles.container2}>
+      
+      <TouchableOpacity onPress={handlePress} style={styles.getDay}>
+        <Text style={styles.text}>Lấy lịch học của ngày hôm nay</Text>
+      </TouchableOpacity>
+     
+        <TextInput style={styles.textinput}
+         placeholder='Nhập ngày cần tìm MM/DD/YYYY'
+         onChangeText={setindate}
+         onEndEditing={handlePress2}
+        >
+        </TextInput>
+        
       <View style={styles.trendall}>
+       
         <FlatList
           style={styles.container2}
           data={LH}
@@ -101,5 +128,31 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     // backgroundColor: 'yellow',
+  },
+  getDay: {
+    backgroundColor: 'red',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    margin: 10,
+  },
+  textinput: {
+    backgroundColor: 'white',
+    height: 50,
+    borderRadius: 10,
+    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 12,
+  
+  },
+  text: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+    
   },
 })
