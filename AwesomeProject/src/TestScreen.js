@@ -58,16 +58,16 @@ const TestScreen = (props) => {
         <Card style={styles.itemCard}>
           <Card.Content style={styles.cardView}>
             <View style={styles.view1}>
-              <Card.Content style={{ backgroundColor: 'white', borderRadius: 15, borderWidth: 1, borderColor: '#FF7A00' }}>
+              <Card.Content style={{ backgroundColor: 'white', borderRadius: 15, borderWidth: 1, borderColor: '#FF7A00', padding: 10 }}>
                 <Text variant="bodyMedium"> {item.ca} </Text>
                 <Text variant="bodyMedium"> {item.diaDiem} </Text>
                 {/* <Text variant="bodyMedium"> </Text> */}
               </Card.Content>
             </View>
             <View style={styles.view1}>
-              <Text variant="bodyMedium">{item.ngayThi} </Text>
-              <Text variant="bodyMedium">Android Networking</Text>
-              <Text variant="bodyMedium">MOB403</Text>
+              <Text style={{fontWeight: 'bold'}} variant="bodyMedium">{item.ngayThi} </Text>
+              <Text style={{fontWeight: 'bold'}} variant="bodyMedium">Android Networking</Text>
+              <Text style={{fontWeight: 'bold'}} variant="bodyMedium">MOB403</Text>
             </View>
           </Card.Content>
         </Card>
@@ -110,42 +110,22 @@ const TestScreen = (props) => {
 }
 
 
-
 export default TestScreen;
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-
+  container2: {
+    width: '100%',
+    height: '100%',
   },
   getDay: {
-    backgroundColor: 'red',
-    color: 'white',
+    backgroundColor: '#FF7A00',
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
     margin: 10,
-    
-  },
-  cardView: {
-    margin: 5,
-    flexDirection: 'row',
-    borderRadius: 15,
-    backgroundColor: 'white',
-
-  },
-
-  itemCard: {
-    backgroundColor: '#ECECEC'
-  },
-
-  view1: {
-    flex: 1,
-    margin: 10,
   },
   textinput: {
     backgroundColor: 'white',
-   
     height: 50,
     borderRadius: 10,
     margin: 10,
@@ -153,22 +133,56 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     fontWeight: 'bold',
-    color: 'black',
+    fontSize: 12,
+
   },
   text: {
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
-    
+
   },
   emptyContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     flex: 1,
   },
   emptyText: {
-    fontSize: 16,
+    color: "black",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  container: {
+    backgroundColor: '#FF7A00'
+  },
+  cardView: {
+    margin: 5,
+    flexDirection: 'row',
+    borderRadius: 15,
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: 'green',
+
+  },
+
+  itemCard: {
+    backgroundColor: '#ECECEC'
+
+  },
+
+  view1: {
+    flex: 1,
+    margin: 10,
+  },
+
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
     fontWeight: 'bold',
-    color: 'black',
+    fontSize: 16
   },
 })

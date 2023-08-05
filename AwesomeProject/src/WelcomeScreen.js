@@ -26,7 +26,7 @@ const WelcomeScreen = ({ navigation }) => {
       </Text>
 
       <Pressable style={styles.buttonStart}
-        onPress={() => navigation.navigate("LoginScreen")}
+        onPress={() => navigation.navigate("Login")}
       >
         <Text style={styles.textButton}>Start</Text>
       </Pressable>

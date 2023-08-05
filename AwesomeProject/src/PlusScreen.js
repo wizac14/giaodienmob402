@@ -8,8 +8,9 @@ import {
   Text,
   View, TouchableOpacity,Linking
 } from "react-native";
-import { tweets } from "../data/tweet";
-import Tweet from "../components/Tweet";
+import { Avatar } from 'react-native-paper';
+
+
 import { useNavigation } from "@react-navigation/native";
 import { useLayoutEffect } from "react";
 import { getTinTucapi } from "./Heper/Service";
@@ -48,8 +49,8 @@ export default function PlusScreen() {
       headerLeft: () => (
         <Pressable onPress={() => navigation.openDrawer()}>
           <Image
-            source={require("../assets/images/fpl.png")}
-            style={{ width: 40, height: 40, borderRadius: 100, marginLeft: 15 }}
+            source={require("../assets/images/fpt.png")}
+            style={{ width: 50, height: 30, borderRadius: 100, marginLeft: 15 }}
           />
         </Pressable>
       ),
@@ -141,6 +142,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     // textAlign: "center",
     margin: 10,
+    fontWeight: 'bold',
+    color: 'black'
   },
 
 });

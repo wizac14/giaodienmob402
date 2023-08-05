@@ -1,8 +1,6 @@
 import { StyleSheet, SafeAreaView, FlatList, Text, View, Image, TextInput, Pressable, ImageBackground, Animated, useWindowDimensions } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from "@react-navigation/native";
-import { tweets } from "../data/tweet";
-import Tweet from "../components/Tweet";
 
 
 const TrangChu = () => {
@@ -13,8 +11,8 @@ const TrangChu = () => {
             headerLeft: () => (
                 <Pressable onPress={() => navigation.openDrawer()}>
                     <Image
-                        source={require("../assets/images/fpl.png")}
-                        style={{ width: 40, height: 40, borderRadius: 100, marginLeft: 15 }}
+                        source={require("../assets/images/fpt.png")}
+                        style={{ width: 50, height: 30, borderRadius: 100, marginLeft: 15 }}
                     />
                 </Pressable>
             ),
@@ -22,48 +20,41 @@ const TrangChu = () => {
     }, []);
     return (
         <SafeAreaView>
-
             <View style={styles.body}>
                 <View style={styles.head}>
                     <Text style={styles.txtHello}>Hello,</Text>
-                    <Text style={styles.txtgood}>good Morning</Text>
+                    <Text style={styles.txtgood}>welcome to MyFPL</Text>
                     <Image style={styles.Sun} source={require('../assets/images/Circle.png')} />
                     <View style={styles.search}>
                         <Image style={styles.imgsearch} source={require('../assets/images/Group.png')} />
-                        <Image style={styles.imgPolygon} source={require('../assets/images/Polygon1.png')} />
                         <TextInput style={styles.txtSearch} placeholder='Tìm kiếm'></TextInput>
-                        <Text style={styles.txtAll}>All</Text>
                     </View>
-                    <Pressable style={styles.thongbao} onPress={() => navigation.navigate("News")}>
+                    <Pressable style={styles.thongbao} onPress={() => navigation.navigate("Tin tức")}>
                         <Image style={styles.chuong} source={require('../assets/images/chuong.png')} />
                     </Pressable>
-                    <Text style={styles.txtKham}>Khám phá thêm</Text>
+                    <Text style={styles.txtKham}>Khám phá ngay</Text>
                 </View>
-
                 <Pressable style={styles.btn1} onPress={() => navigation.navigate("Lịch Học")}>
-                    <Image style={styles.ve} source={require('../assets/images/ve.png')} />
+                    <Image style={styles.ve} source={require('../assets/images/zyro6.png')} />
                     <Text style={styles.txtlich}>Lịch học</Text>
                     {/* <Text style={styles.khoahoc}>20 Courses</Text> */}
                 </Pressable>
                 <Pressable style={styles.btn2} onPress={() => navigation.navigate("Lịch Thi")}>
-                    <Image style={styles.ve} source={require('../assets/images/nghiencuu.png')} />
+                    <Image style={styles.ve} source={require('../assets/images/zyro3.png')} />
                     <Text style={styles.txtlich}>Lịch thi</Text>
                     {/* <Text style={styles.khoahoc}>15 Courses</Text> */}
                 </Pressable>
                 <Pressable style={styles.btn3} onPress={() => navigation.navigate("Game")}>
-                    <Image style={styles.ve} source={require('../assets/images/thongbao.png')} />
+                    <Image style={styles.ve} source={require('../assets/images/zyro4.png')} />
                     <Text style={styles.txtlich}>Game</Text>
                     {/* <Text style={styles.khoahoc}>25 tin mới</Text> */}
                 </Pressable>
-                <Pressable style={styles.btn4} onPress={() => navigation.navigate("TheSV")}>
-                    <Image style={styles.ve} source={require('../assets/images/xaydung.png')} />
+                <Pressable style={styles.btn4} onPress={() => navigation.navigate("Thẻ Sinh Viên")}>
+                    <Image style={styles.ve} source={require('../assets/images/zyro5.png')} />
                     <Text style={styles.txtChucnang}>Thẻ sinh viên online</Text>
                 </Pressable>
-
             </View>
-
         </SafeAreaView>
-
     )
 }
 
@@ -219,10 +210,9 @@ const styles = StyleSheet.create({
         width: 120,
         height: 30,
         fontSize: 18,
-        fontStyle: 'normal',
         letterSpacing: 0.75,
-        color: "#000000",
-        fontWeight: '700',
+        color: "black",
+        fontWeight: 'bold',
         fontFamily: 'Inter',
         lineHeight: 20,
         top: 60,

@@ -8,7 +8,7 @@ import ThongBao from './ThongBao'
 import LoginScreen from './LoginScreen'
 import StudyScreen from './StudyScreen'
 import TestScreen from './TestScreen'
-import NotificationScreen from './NewsScreen'
+import NewsScreen from './NewsScreen'
 import PlusScreen from './PlusScreen'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import TrangChu from './TrangChu'
@@ -23,11 +23,11 @@ const Tab = createBottomTabNavigator();
 function TabGroup() {
   return (
     <Tab.Navigator
-      initialRouteName='MyFPL'
+      initialRouteName='FPT Polytechnic'
       screenOptions={{
         tabBarShowLabel: false,
       }}>
-      <Tab.Screen name='Tweet' component={PlusScreen} options={{
+      <Tab.Screen name='Thông báo' component={PlusScreen} options={{
         tabBarBadge: '!',
         headerTitleAlign: 'center',
         // tabBarActiveBackgroundColor: 'black',
@@ -45,7 +45,7 @@ function TabGroup() {
           </View>
         )
       }} />
-      <Tab.Screen name='MyFPL' component={TrangChu} options={{
+      <Tab.Screen name='FPT Polytechnic' component={TrangChu} options={{
         tabBarIcon: ({ focused }) => (
           <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <Image
@@ -60,12 +60,12 @@ function TabGroup() {
           </View>
         )
       }} />
-      <Tab.Screen name='Tin tức' component={NotificationScreen} options={{
+      <Tab.Screen name='Tin tức' component={NewsScreen} options={{
         headerTitleAlign: 'center',
         tabBarIcon: ({ focused }) => (
           <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <Image
-              source={require('../assets/images/notification.png')}
+              source={require('../assets/images/megaphone.png')}
               resizeMode='contain'
               style={{
                 width: 30,
@@ -77,9 +77,24 @@ function TabGroup() {
         )
       }} />
       <Tab.Screen
-        name='ThongBao'
+        name='Điểm danh'
         component={ThongBao}
-        options={{ headerShown: false }} />
+        options={{
+          headerTitleAlign: 'center',
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+              <Image
+                source={require('../assets/images/schedule.png')}
+                resizeMode='contain'
+                style={{
+                  width: 30,
+                  height: 30,
+                  tintColor: focused ? '#e32f45' : '#748c94'
+                }}
+              />
+            </View>
+          )
+        }} />
     </Tab.Navigator>
   )
 }
@@ -89,15 +104,7 @@ const HomeStack = createNativeStackNavigator();
 function HomeStackGroup() {
   return (
 
-    <HomeStack.Navigator initialRouteName='Welcome'>
-      {/* <HomeStack.Screen
-        name='Login'
-        component={LoginScreen}
-        options={{ headerShown: false }} /> */}
-      {/* <HomeStack.Screen 
-        name='Welcome' 
-        component={WelcomeScreen}
-        options={{ headerShown: false }}/> */}
+    <HomeStack.Navigator initialRouteName='Login'>
       <HomeStack.Screen
         name='TabGroup'
         component={TabGroup}
@@ -106,19 +113,34 @@ function HomeStackGroup() {
         name='TweetDetailScreen'
         component={TweetDetailScreen} />
       <HomeStack.Screen
-        name='News'
-        component={NotificationScreen} />
+      options={{
+        headerTitleAlign: 'center',
+      }}
+        name='Tin tức'
+        component={NewsScreen} />
       <HomeStack.Screen
-        name='Study'
+      options={{
+        headerTitleAlign: 'center',
+      }}
+        name='Lịch Học'
         component={StudyScreen} />
       <HomeStack.Screen
-        name='Test'
+        options={{
+          headerTitleAlign: 'center',
+        }}
+        name='Lịch Thi'
         component={TestScreen} />
       <HomeStack.Screen
+      options={{
+        headerTitleAlign: 'center',
+      }}
         name='Game'
         component={Game} />
       <HomeStack.Screen
-        name='TheSV'
+      options={{
+        headerTitleAlign: 'center',
+      }}
+        name='Thẻ Sinh Viên'
         component={Tet} />
 
     </HomeStack.Navigator>
