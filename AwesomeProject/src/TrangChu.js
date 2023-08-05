@@ -40,12 +40,12 @@ const TrangChu = () => {
                     <Text style={styles.txtKham}>Khám phá thêm</Text>
                 </View>
 
-                <Pressable style={styles.btn1} onPress={() => navigation.navigate("Study")}>
+                <Pressable style={styles.btn1} onPress={() => navigation.navigate("Lịch Học")}>
                     <Image style={styles.ve} source={require('../assets/images/ve.png')} />
                     <Text style={styles.txtlich}>Lịch học</Text>
                     <Text style={styles.khoahoc}>20 Courses</Text>
                 </Pressable>
-                <Pressable style={styles.btn2} onPress={() => navigation.navigate("Test")}>
+                <Pressable style={styles.btn2} onPress={() => navigation.navigate("Lịch Thi")}>
                     <Image style={styles.ve} source={require('../assets/images/nghiencuu.png')} />
                     <Text style={styles.txtlich}>Lịch thi</Text>
                     <Text style={styles.khoahoc}>15 Courses</Text>

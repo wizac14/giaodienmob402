@@ -99,13 +99,16 @@ function HomeStackGroup() {
         component={TweetDetailScreen} />
       <HomeStack.Screen
         name='News'
-        component={NotificationScreen} />
+        component={NotificationScreen} 
+        options={{headerTitleAlign: 'center'}}/>
       <HomeStack.Screen
-        name='Study'
-        component={StudyScreen} />
+        name='Lịch Học'
+        component={StudyScreen}
+        options={{headerTitleAlign: 'center'}} />
       <HomeStack.Screen
-        name='Test'
-        component={TestScreen} />
+        name='Lịch Thi'
+        component={TestScreen}
+        options={{headerTitleAlign: 'center'}} />
     </HomeStack.Navigator>
   )
 }

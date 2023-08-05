@@ -43,8 +43,8 @@ const StudyScreen = (props) => {
         <Card style={styles.itemCard}>
           <Card.Content style={styles.cardView}>
             <View style={styles.view1}>
-              <Card.Content style={{ backgroundColor: 'white', borderRadius: 15, borderWidth: 1, borderColor: '#FF7A00' }}>
-                <Text variant="bodyMedium"> {item.ca} </Text>
+              <Card.Content style={{ backgroundColor: 'white', borderRadius: 15, borderWidth: 1, borderColor: '#FF7A00', padding: 10 }}>
+                <Text style={styles.title} variant="bodyMedium"> {item.ca} </Text>
                 <Text variant="bodyMedium"> {item.diaDiem} </Text>
                 {/* <Text variant="bodyMedium"> </Text> */}
               </Card.Content>
@@ -70,7 +70,7 @@ const StudyScreen = (props) => {
     <GestureHandlerRootView style={styles.container2}>
       
           <TouchableOpacity onPress={handlePress} style={styles.getDay}>
-            <Text>Get Today's Date</Text>
+            <Text style={styles.textToday}>Get Today's Date</Text>
           </TouchableOpacity>
         
       <View style={styles.trendall}>
@@ -94,7 +94,26 @@ export default StudyScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
 
+  container2: {
+    
+      width: '100%',
+      height: '100%',
+  },
+
+  getDay: {
+    alignContent: 'center',
+    backgroundColor: '#FF7A00',
+    borderWidth: 1,
+    borderRadius: 15,
+  },
+
+  textToday: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontFamily: 'Popins',
+    fontWeight: 'bold'
   },
 
   cardView: {
@@ -102,29 +121,29 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderRadius: 15,
     backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: 'green',
 
   },
 
   itemCard: {
     backgroundColor: '#ECECEC'
+    
   },
 
   view1: {
     flex: 1,
     margin: 10,
   },
-  container2: {
-    width: '100%',
-    height: '100%',
-    // backgroundColor: 'yellow',
+
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
   },
-  getDay: {
-    backgroundColor: 'red',
-    width: 100,
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    margin: 10,
+  title: {
+    fontWeight: 'bold',
+    fontSize: 14
   },
 })
