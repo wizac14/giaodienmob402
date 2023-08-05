@@ -79,14 +79,12 @@ export const getLTDate = async (id_user, ngayThi) => {
             ngayThi: ngayThi
 
         }
-
         const response = await AxiosInstance().post('/lichthi/user/find', body);
         console.log("lấy lịch thi theo ngày ", response);
         return response;
     } catch (error) {
         console.log("error", error);
     }
-    
 }
 export const getGame = async () => {
     try {
@@ -106,4 +104,20 @@ export const getPlayed = async () => {
         console.log("error", error);
     }
 }
+export const LayDiem = async (id_user, game_id,diem) => {
+    try {
+        const body =
+        {
+            id_user: id_user,
+            game_id: game_id,
+            diem: diem
 
+        }
+        const response = await AxiosInstance().post('/played/lay-diem', body);
+        console.log("lấy Điểm thành công ", response);
+        return response;
+    } catch (error) {
+        console.log("error", error);
+    }
+    
+}

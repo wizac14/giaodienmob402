@@ -24,13 +24,13 @@ import { Game } from './src/Game'
 import GameTest from './src/GameTest'
 const App = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-        <GameTest/>
-    </SafeAreaView>
+    // <SafeAreaView style={{ flex: 1 }}>
+    //     <Game/>
+    // </SafeAreaView>
 
-    // <UserProvider>
-    //   <AppNavigation/>
-    // </UserProvider>
+    <UserProvider>
+      <AppNavigation/>
+    </UserProvider>
   )
 }
 

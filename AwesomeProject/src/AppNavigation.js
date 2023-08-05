@@ -13,7 +13,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import TrangChu from './TrangChu'
 import TweetDetailScreen from './TweetDetailsScreen'
 import { useContext } from 'react'
-import {UserContext} from './UserContext'
+import { UserContext } from './UserContext'
+import { Game } from './Game'
 
 //Tab Bottom
 const Tab = createBottomTabNavigator();
@@ -81,13 +82,13 @@ function TabGroup() {
 const HomeStack = createNativeStackNavigator();
 function HomeStackGroup() {
   return (
-    
+
     <HomeStack.Navigator initialRouteName='Welcome'>
-        {/* <HomeStack.Screen
+      {/* <HomeStack.Screen
         name='Login'
         component={LoginScreen}
         options={{ headerShown: false }} /> */}
-        {/* <HomeStack.Screen 
+      {/* <HomeStack.Screen 
         name='Welcome' 
         component={WelcomeScreen}
         options={{ headerShown: false }}/> */}
@@ -107,17 +108,21 @@ function HomeStackGroup() {
       <HomeStack.Screen
         name='Test'
         component={TestScreen} />
+      <HomeStack.Screen
+        name='Game'
+        component={Game} />
+
     </HomeStack.Navigator>
   )
 }
 
 const AppNavigation = () => {
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext)
   return (
     <NavigationContainer>
       {
-        user ? <HomeStackGroup/>
-            : <LoginScreen/>
+        user ? <HomeStackGroup />
+          : <LoginScreen />
       }
     </NavigationContainer>
   )

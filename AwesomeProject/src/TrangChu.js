@@ -50,7 +50,7 @@ const TrangChu = () => {
                     <Text style={styles.txtlich}>Lịch thi</Text>
                     <Text style={styles.khoahoc}>15 Courses</Text>
                 </Pressable>
-                <Pressable style={styles.btn3} onPress={() => navigation.navigate("News")}>
+                <Pressable style={styles.btn3} onPress={() => navigation.navigate("Game")}>
                     <Image style={styles.ve} source={require('../assets/images/thongbao.png')} />
                     <Text style={styles.txtlich}>Tin tức</Text>
                     <Text style={styles.khoahoc}>25 tin mới</Text>

@@ -1,40 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import { getGame,getPlayed } from './Heper/Service'
-
-// const gameData = [
-//     {
-//         cauhoi: '1+1=?',
-//         a: '2',
-//         b: '3',
-//         c: '4',
-//         d: '5',
-//         dapan: 'a',
-//     },
-//     {
-//         cauhoi: '2+2=?',
-//         a: '3',
-//         b: '4',
-//         c: '5',
-//         d: '6',
-//         dapan: 'b',
-//     },
-//     // Thêm câu hỏi khác ở đây
-// ];
+import { getGame, getPlayed, LayDiem } from './Heper/Service'
+import { UserContext } from './UserContext'
+import { useNavigation } from '@react-navigation/native';
 
 export const Game = () => {
-    const id_user = "64b7aaa1c792d40deef11a44"; 
+    const navigation = useNavigation();
+    //Giá trị id_user bạn muốn lọc
+    const { user, id_user } = useContext(UserContext)
     const [listgame, setlistgame] = useState([]);
+    let game_id = "64cd01d4b0eba2045e9b543e";
     const OnGetGame = async () => {
-        const res = await getGame();
+        // lay du lieu nguoi da choi
         const resplay = await getPlayed();
-        const data = res[0].game;
-        const data2 = resplay[0]._id;
-        // const data2 = data[0].a;
-        setlistgame(data)
-        // console.log("data", data);
-        console.log("res", res);
+        var targetIdUser = id_user;
+        const filteredData = resplay.filter(item => item.id_user === targetIdUser);
+        console.log("filteredData", filteredData);
+        if (filteredData.length > 0) {
+            console.log("Sinh viên này đã tham gia");
+        } else {
+            // lay du lieu tro choi
+            const res = await getGame();
+            const data = res[0].game;
+            setlistgame(data)
+            console.log("Sinh viên này chưa tham gia");
+        }
     }
+    const OnLayDiem = async (id_user, game_id, diem) => {
+        const res = await LayDiem(id_user, game_id, diem);
+        navigation.navigate('TabGroup');
+        console.log("Lấy điểm thành công", res);
+     }
     useEffect(() => {
         OnGetGame();
     }, [])
@@ -58,9 +54,10 @@ export const Game = () => {
     };
 
     const handleRestart = () => {
-        setCurrentQuestionIndex(0);
-        setScore(0);
-        setShowResult(false);
+        // setCurrentQuestionIndex(0);
+        // setScore(0);
+        // setShowResult(false);
+        
     };
 
     const renderQuestion = () => {
@@ -68,7 +65,7 @@ export const Game = () => {
             return (
                 <View style={styles.container}>
                     <Text style={styles.resultText}>Kết quả: {score}/{gameData.length}</Text>
-                    <Button title="Chơi lại" onPress={handleRestart} />
+                    <Button title="Lấy điểm" onPress={()=>OnLayDiem(id_user,game_id,score)} />
                 </View>
             );
         }
