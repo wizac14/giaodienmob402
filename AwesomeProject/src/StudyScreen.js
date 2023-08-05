@@ -8,6 +8,8 @@ import { UserContext } from './UserContext';
 import { getLHUser } from './Heper/Service';
 const StudyScreen = (props) => {
   const { id_user, setid_user } = useContext(UserContext);
+  
+  // const id_user = "64b7aaa1c792d40deef11a44"
   const [LH, setLH] = useState([]);
 
   // const ongetLH = async () => {

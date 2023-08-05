@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, SafeAreaView } from 'react-native'
 import WelcomeScreen from './src/WelcomeScreen'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -19,14 +19,18 @@ import Icon from 'react-native-ionicons'
 import Tet from './src/Tet'
 import { UserProvider } from './src/UserContext'
 import AppNavigation from './src/AppNavigation'
-
-
+import ThongBao from './src/ThongBao'
+import { Game } from './src/Game'
+import GameTest from './src/GameTest'
 const App = () => {
   return (
-    
-    <UserProvider>
-      <AppNavigation/>
-    </UserProvider>
+    <SafeAreaView style={{ flex: 1 }}>
+        <GameTest/>
+    </SafeAreaView>
+
+    // <UserProvider>
+    //   <AppNavigation/>
+    // </UserProvider>
   )
 }
 
