@@ -1,11 +1,13 @@
 import { StyleSheet, SafeAreaView, FlatList, Text, View, Image, TextInput, Pressable, ImageBackground, Animated, useWindowDimensions } from 'react-native'
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect,useContext } from 'react'
 import { useNavigation } from "@react-navigation/native";
+import { UserContext } from './UserContext'
+
 
 
 const TrangChu = () => {
     const navigation = useNavigation();
-
+    const { user,setUser } = useContext(UserContext)
     useLayoutEffect(() => {
         navigation.setOptions({
             headerLeft: () => (
@@ -29,7 +31,7 @@ const TrangChu = () => {
                         <Image style={styles.imgsearch} source={require('../assets/images/Group.png')} />
                         <TextInput style={styles.txtSearch} placeholder='Tìm kiếm'></TextInput>
                     </View>
-                    <Pressable style={styles.thongbao} onPress={() => navigation.navigate("Tin tức")}>
+                    <Pressable style={styles.thongbao} onPress={() => setUser(null)}>
                         <Image style={styles.chuong} source={require('../assets/images/chuong.png')} />
                     </Pressable>
                     <Text style={styles.txtKham}>Khám phá ngay</Text>
