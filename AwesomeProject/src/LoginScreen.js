@@ -8,8 +8,8 @@ import { login } from './Heper/Service'
 const LoginScreen = () => {
     const {user, setUser} = useContext(UserContext)  ;
     const {id_user, setid_user} = useContext(UserContext)  ;
-    const [email, setemail] = useState("1");
-    const [password, setpassword] = useState("1");
+    const [email, setemail] = useState("ps1234@fpt.edu.vn");
+    const [password, setpassword] = useState("123");
     const [token, settoken] = useState("");
     const testContext = async () => {
         try {
