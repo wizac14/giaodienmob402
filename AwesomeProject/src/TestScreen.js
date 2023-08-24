@@ -212,4 +212,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
   },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+   
+  },
 })
