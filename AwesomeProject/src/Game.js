@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, ImageBackground, Image } from 'react-native';
 import { getGame, getPlayed, LayDiem } from './Heper/Service'
 import { UserContext } from './UserContext'
 import { useNavigation } from '@react-navigation/native';
+
 
 export const Game = () => {
     const navigation = useNavigation();
@@ -80,7 +81,7 @@ export const Game = () => {
                 <View style={{
                     width: "100%",
                     height: "100%",
-                    justifyContent: "center", 
+                    justifyContent: "center",
                     alignItems: 'center',
                 }} >
                     <Text style={{
@@ -99,13 +100,18 @@ export const Game = () => {
         const currentQuestion = gameData[currentQuestionIndex];
 
         return (
+
             <View style={styles.container}>
+                <Image resizeMode='contain' style={{ justifyContent: 'center', flex: 1, width: "80%" }} source={require('../assets/images/gamee.png')} />
                 <Text style={styles.questionText}>{currentQuestion.cauhoi}</Text>
-                <Button title={currentQuestion.a} onPress={() => handleAnswer('a')} />
-                <Button title={currentQuestion.b} onPress={() => handleAnswer('b')} />
-                <Button title={currentQuestion.c} onPress={() => handleAnswer('c')} />
-                <Button title={currentQuestion.d} onPress={() => handleAnswer('d')} />
+                <View style={{ width: "80%", flex: 1 }}>
+                    <Button title={currentQuestion.a} onPress={() => handleAnswer('a')} />
+                    <Button title={currentQuestion.b} onPress={() => handleAnswer('b')} />
+                    <Button title={currentQuestion.c} onPress={() => handleAnswer('c')} />
+                    <Button title={currentQuestion.d} onPress={() => handleAnswer('d')} />
+                </View>
             </View>
+
         );
     };
 
@@ -119,12 +125,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     questionText: {
-        fontSize: 18,
-        marginBottom: 20,
+        fontSize: 28,
+        marginBottom: 30,
+        padding: 5,
+        fontFamily: "Popins",
+        borderWidth: 1,
+        borderRadius: 15,
+        color: 'black',
+        textShadowColor: 'white',
+        textShadowRadius: 5,
+        backgroundColor: 'white',
+        height: "auto",
+        marginTop: 20
     },
     resultText: {
         fontSize: 24,
         fontWeight: 'bold',
+
     },
 });
 
