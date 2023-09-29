@@ -27,6 +27,21 @@ function TabGroup() {
       screenOptions={{
         tabBarShowLabel: false,
       }}>
+      <Tab.Screen name='FPT Polytechnic' component={TrangChu} options={{
+        tabBarIcon: ({ focused }) => (
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <Image
+              source={require('../assets/images/homee).png')}
+              resizeMode='contain'
+              style={{
+                width: 30,
+                height: 30,
+                tintColor: focused ? '#e32f45' : '#748c94'
+              }}
+            />
+          </View>
+        )
+      }} />
       <Tab.Screen name='Thông báo' component={PlusScreen} options={{
         tabBarBadge: '!',
         headerTitleAlign: 'center',
@@ -45,21 +60,7 @@ function TabGroup() {
           </View>
         )
       }} />
-      <Tab.Screen name='FPT Polytechnic' component={TrangChu} options={{
-        tabBarIcon: ({ focused }) => (
-          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-            <Image
-              source={require('../assets/images/homee).png')}
-              resizeMode='contain'
-              style={{
-                width: 30,
-                height: 30,
-                tintColor: focused ? '#e32f45' : '#748c94'
-              }}
-            />
-          </View>
-        )
-      }} />
+
       <Tab.Screen name='Tin tức' component={NewsScreen} options={{
         headerTitleAlign: 'center',
         tabBarIcon: ({ focused }) => (
@@ -113,15 +114,15 @@ function HomeStackGroup() {
         name='TweetDetailScreen'
         component={TweetDetailScreen} />
       <HomeStack.Screen
-      options={{
-        headerTitleAlign: 'center',
-      }}
+        options={{
+          headerTitleAlign: 'center',
+        }}
         name='Tin tức'
         component={NewsScreen} />
       <HomeStack.Screen
-      options={{
-        headerTitleAlign: 'center',
-      }}
+        options={{
+          headerTitleAlign: 'center',
+        }}
         name='Lịch Học'
         component={StudyScreen} />
       <HomeStack.Screen
@@ -131,15 +132,15 @@ function HomeStackGroup() {
         name='Lịch Thi'
         component={TestScreen} />
       <HomeStack.Screen
-      options={{
-        headerTitleAlign: 'center',
-      }}
+        options={{
+          headerTitleAlign: 'center',
+        }}
         name='Game'
         component={Game} />
       <HomeStack.Screen
-      options={{
-        headerTitleAlign: 'center',
-      }}
+        options={{
+          headerTitleAlign: 'center',
+        }}
         name='Thẻ Sinh Viên'
         component={Tet} />
 
