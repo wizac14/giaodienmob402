@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
-import { getGame, getPlayed, LayDiem } from './Heper/Service'
+import { getGame, getPlayed, LayDiem ,getGame2} from './Heper/Service'
 import { UserContext } from './UserContext'
 import { useNavigation } from '@react-navigation/native';
 
@@ -10,7 +10,9 @@ export const Game = () => {
     const { user, id_user } = useContext(UserContext)
     const [thongBao, setthongBao] = useState(false);
     const [listgame, setlistgame] = useState([]);
-    let game_id = "64cd01d4b0eba2045e9b543e";
+    const [customId, setcustomId] = useState(0);
+    
+    const [game_id, setgame_id] = useState(null);
     const thongBaoDaChoi = () => {
         <Text style={{}}>Kết quả của bạn đã được lưu</Text>
     }
@@ -26,8 +28,11 @@ export const Game = () => {
 
         } else {
             // lay du lieu tro choi
-            const res = await getGame();
-            const data = res[0].game;
+            // const res = await getGame();
+            // const data = res[0].game;
+            const res = await getGame2(123);
+            const data = res.game;
+            setgame_id(res._id);
             setlistgame(data)
             console.log("Sinh viên này chưa tham gia");
         }
