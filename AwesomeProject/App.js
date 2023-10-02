@@ -22,10 +22,11 @@ import AppNavigation from './src/AppNavigation'
 import ThongBao from './src/ThongBao'
 import { Game } from './src/Game'
 import GameTest from './src/GameTest'
+import TestQR from './src/TestQR'
 const App = () => {
   return (
     // <SafeAreaView style={{ flex: 1 }}>
-    //     <ThongBao/>
+    //     <TestQR/>
     // </SafeAreaView>
 
     <UserProvider>
