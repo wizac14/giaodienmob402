@@ -21,11 +21,11 @@ import { UserProvider } from './src/UserContext'
 import AppNavigation from './src/AppNavigation'
 import ThongBao from './src/ThongBao'
 import { Game } from './src/Game'
-import GameTest from './src/GameTest'
+import PlayMiniGame from './src/PlayMiniGame'
 const App = () => {
   return (
     // <SafeAreaView style={{ flex: 1 }}>
-    //     <ThongBao/>
+    //     <PlayMiniGame/>
     // </SafeAreaView>
 
     <UserProvider>

@@ -17,7 +17,7 @@ import { useContext } from 'react'
 import { UserContext } from './UserContext'
 import { Game } from './Game'
 import Tet from './Tet'
-
+import PlayMiniGame from './PlayMiniGame'
 //Tab Bottom
 const Tab = createBottomTabNavigator();
 function TabGroup() {
@@ -143,6 +143,13 @@ function HomeStackGroup() {
         }}
         name='Thẻ Sinh Viên'
         component={Tet} />
+      <HomeStack.Screen
+        options={{
+          headerTitleAlign: 'center',
+        }}
+        name='PlayMiniGame'
+        component={PlayMiniGame} />
+      
 
     </HomeStack.Navigator>
   )
