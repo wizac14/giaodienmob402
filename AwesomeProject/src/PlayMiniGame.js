@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 const PlayMiniGame = () => {
+    const navigation = useNavigation();
     const [inputText, setInputText] = useState('');
 
     const handleButtonPress = () => {
         // Xử lý khi người dùng nhấn vào nút ở đây
         alert(`Bạn đã nhập: ${inputText}`);
+        navigation.navigate('Game',{CustomId:inputText});
     }
     return (
         <View style={styles.container}>

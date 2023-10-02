@@ -1,27 +1,30 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
-import { getGame, getPlayed, LayDiem ,getGame2} from './Heper/Service'
+import { getGame, getPlayed, LayDiem ,getGame2,getPlayedGames} from './Heper/Service'
 import { UserContext } from './UserContext'
 import { useNavigation } from '@react-navigation/native';
 
-export const Game = () => {
+export const Game = ({route}) => {
+    console.log("route",route.params.CustomId);
     const navigation = useNavigation();
     //Giá trị id_user bạn muốn lọc
     const { user, id_user } = useContext(UserContext)
     const [thongBao, setthongBao] = useState(false);
     const [listgame, setlistgame] = useState([]);
-    const [customId, setcustomId] = useState(0);
-    
     const [game_id, setgame_id] = useState(null);
     const thongBaoDaChoi = () => {
         <Text style={{}}>Kết quả của bạn đã được lưu</Text>
     }
     const OnGetGame = async () => {
+        const res = await getGame2(String( route.params.CustomId));
+        const data = res.game;
+        setgame_id(res._id);
         // lay du lieu nguoi da choi
-        const resplay = await getPlayed();
+        const resplay = await getPlayedGames(res._id);
+        console.log("resplay", resplay);
         var targetIdUser = id_user;
         const filteredData = resplay.filter(item => item.id_user === targetIdUser);
-        console.log("filteredData", filteredData);
+        // console.log("filteredData", filteredData);
         if (filteredData.length > 0) {
             setthongBao(true);
             console.log("Sinh viên này đã tham gia");
@@ -30,9 +33,9 @@ export const Game = () => {
             // lay du lieu tro choi
             // const res = await getGame();
             // const data = res[0].game;
-            const res = await getGame2(123);
-            const data = res.game;
-            setgame_id(res._id);
+            // const res = await getGame2(String( route.params.CustomId));
+            // const data = res.game;
+            // setgame_id(res._id);
             setlistgame(data)
             console.log("Sinh viên này chưa tham gia");
         }
