@@ -46,7 +46,7 @@ const TrangChu = () => {
                     <Text style={styles.txtlich}>Lịch thi</Text>
                     {/* <Text style={styles.khoahoc}>15 Courses</Text> */}
                 </Pressable>
-                <Pressable style={styles.btn3} onPress={() => navigation.navigate("Game")}>
+                <Pressable style={styles.btn3} onPress={() => navigation.navigate("PlayMiniGame")}>
                     <Image style={styles.ve} source={require('../assets/images/quiz.png')} />
                     <Text style={styles.txtlich}>Game</Text>
                     {/* <Text style={styles.khoahoc}>25 tin mới</Text> */}

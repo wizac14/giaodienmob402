@@ -122,6 +122,16 @@ export const getPlayed = async () => {
         console.log("error", error);
     }
 }
+// láy dữ liệu người chơi theo game id
+export const getPlayedGames  = async (game_id) => {
+    try {
+        const response = await AxiosInstance().get('/played/game_id/?game_id='+game_id);
+        // console.log(response);
+        return response;
+    } catch (error) {
+        console.log("error", error);
+    }
+}
 export const LayDiem = async (id_user, game_id,diem) => {
     try {
         const body =
