@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 18,
         padding: 32,
-        // color: 'white',
+        color: 'black',
     },
     textBold: {
         fontWeight: '500',
