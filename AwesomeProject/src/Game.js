@@ -3,6 +3,7 @@ import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { getGame, getPlayed, LayDiem, getGame2, getPlayedGames } from './Heper/Service'
 import { UserContext } from './UserContext'
 import { useNavigation } from '@react-navigation/native';
+import { TestQR } from './TestQR';
 
 export const Game = ({ route }) => {
     console.log("route", route.params.CustomId);
@@ -203,6 +204,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
     },
+   
 });
 
 export default Game;
