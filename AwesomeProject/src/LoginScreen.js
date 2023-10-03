@@ -5,10 +5,11 @@ import {
 import React, { useContext, useState } from 'react'
 import { UserContext } from './UserContext'
 import { login } from './Heper/Service'
+
 const LoginScreen = () => {
     const { user, setUser } = useContext(UserContext);
     const { id_user, setid_user } = useContext(UserContext);
-    const [email, setemail] = useState("ps1234@fpt.edu.vn");
+    const [email, setemail] = useState("ps3456@fpt.edu.vn");
     const [password, setpassword] = useState("123");
     const [token, settoken] = useState("");
     const testContext = async () => {
@@ -38,16 +39,15 @@ const LoginScreen = () => {
     return (
         <View style={styles.container}>
             {/* <Text style={styles.txtMyFPL}>Xin chào, {"\n"}chào mừng đến với MyFPL!</Text> */}
-            <Image style={{ width: '30%', height: '20%', alignSelf: 'center' }} source={require('../assets/images/fpl-removebg-preview.png')} />
+            <Image style={{width: '30%', height: '20%', alignSelf: 'center'}} source={require('../assets/images/fpl-removebg-preview.png')}/>
             <View style={styles.viewCon}>
                 <Text style={styles.txtDangNhap}>Đăng nhập</Text>
                 <Text style={styles.txtEmail}>Email</Text>
                 <TextInput style={styles.txtInputEmail} placeholder="Nhập email" onChangeText={setemail} value={email} />
                 <Text style={styles.txtPassword}>Password</Text>
-                <TextInput style={styles.txtInputEmail} placeholder="Nhập password" onChangeText={setpassword} value={password}
-                    secureTextEntry={true} />
+                <TextInput style={styles.txtInputEmail} placeholder="Nhập password" onChangeText={setpassword} value={password} />
                 <Text style={styles.txtQuenMatKhau}>Quên mật khẩu?</Text>
-
+                
                 <TouchableOpacity style={styles.btnDangNhap} onPress={() => testContext()}>
                     <Text style={styles.txtLogin}>Login</Text>
                 </TouchableOpacity>

@@ -37,22 +37,22 @@ const TrangChu = () => {
                     <Text style={styles.txtKham}>Khám phá ngay</Text>
                 </View>
                 <Pressable style={styles.btn1} onPress={() => navigation.navigate("Lịch Học")}>
-                    <Image style={styles.ve} source={require('../assets/images/zyro6.png')} />
+                    <Image style={styles.ve} source={require('../assets/images/schedulee.png')} />
                     <Text style={styles.txtlich}>Lịch học</Text>
                     {/* <Text style={styles.khoahoc}>20 Courses</Text> */}
                 </Pressable>
                 <Pressable style={styles.btn2} onPress={() => navigation.navigate("Lịch Thi")}>
-                    <Image style={styles.ve} source={require('../assets/images/zyro3.png')} />
+                    <Image style={styles.ve} source={require('../assets/images/exam-results.png')} />
                     <Text style={styles.txtlich}>Lịch thi</Text>
                     {/* <Text style={styles.khoahoc}>15 Courses</Text> */}
                 </Pressable>
-                <Pressable style={styles.btn3} onPress={() => navigation.navigate("Game")}>
-                    <Image style={styles.ve} source={require('../assets/images/zyro4.png')} />
+                <Pressable style={styles.btn3} onPress={() => navigation.navigate("PlayMiniGame")}>
+                    <Image style={styles.ve} source={require('../assets/images/quiz.png')} />
                     <Text style={styles.txtlich}>Game</Text>
                     {/* <Text style={styles.khoahoc}>25 tin mới</Text> */}
                 </Pressable>
                 <Pressable style={styles.btn4} onPress={() => navigation.navigate("Thẻ Sinh Viên")}>
-                    <Image style={styles.ve} source={require('../assets/images/zyro5.png')} />
+                    <Image style={styles.ve} source={require('../assets/images/card.png')} />
                     <Text style={styles.txtChucnang}>Thẻ sinh viên online</Text>
                 </Pressable>
             </View>

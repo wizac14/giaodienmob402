@@ -103,9 +103,29 @@ export const getGame = async () => {
         console.log("error", error);
     }
 }
+// lấy dữ liệu game theo customid
+export const getGame2 = async (customId) => {
+    try {
+        const response = await AxiosInstance().get('/game2/'+customId);
+        // console.log(response);
+        return response;
+    } catch (error) {
+        console.log("error", error);
+    }
+}
 export const getPlayed = async () => {
     try {
         const response = await AxiosInstance().get('/played');
+        // console.log(response);
+        return response;
+    } catch (error) {
+        console.log("error", error);
+    }
+}
+// láy dữ liệu người chơi theo game id
+export const getPlayedGames  = async (game_id) => {
+    try {
+        const response = await AxiosInstance().get('/played/game_id/?game_id='+game_id);
         // console.log(response);
         return response;
     } catch (error) {

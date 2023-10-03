@@ -21,7 +21,7 @@ import { UserProvider } from './src/UserContext'
 import AppNavigation from './src/AppNavigation'
 import ThongBao from './src/ThongBao'
 import { Game } from './src/Game'
-import GameTest from './src/GameTest'
+import PlayMiniGame from './src/PlayMiniGame'
 import TestQR from './src/TestQR'
 const App = () => {
   return (
