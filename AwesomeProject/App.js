@@ -25,13 +25,13 @@ import PlayMiniGame from './src/PlayMiniGame'
 import TestQR from './src/TestQR'
 const App = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-        <TestQR/>
-    </SafeAreaView>
+    // <SafeAreaView style={{ flex: 1 }}>
+    //     <TestQR/>
+    // </SafeAreaView>
 
-    // <UserProvider>
-    //   <AppNavigation/>
-    // </UserProvider>
+    <UserProvider>
+      <AppNavigation/>
+    </UserProvider>
   )
 }
 
