@@ -15,7 +15,7 @@ const TestQR = () => {
                 showMarker={true}
                 topContent={
                     <View style={styles.centerText}>
-                        <Text style={styles.textBold}>Scan QR Code</Text>
+                        <Text style={styles.centerText}>Scan QR Code</Text>
                     </View>
                 }
                 bottomContent={
@@ -27,7 +27,6 @@ const TestQR = () => {
     )
 }
 export default TestQR
-
 const styles = StyleSheet.create({
     centerText: {
         flex: 1,
@@ -40,5 +39,4 @@ const styles = StyleSheet.create({
         color: '#000',
         color: 'white',
     },
-
 })
