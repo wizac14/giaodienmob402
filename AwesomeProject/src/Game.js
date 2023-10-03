@@ -1,27 +1,28 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
-import { getGame, getPlayed, LayDiem ,getGame2,getPlayedGames} from './Heper/Service'
+import { getGame, getPlayed, LayDiem, getGame2, getPlayedGames } from './Heper/Service'
 import { UserContext } from './UserContext'
 import { useNavigation } from '@react-navigation/native';
 
-export const Game = ({route}) => {
-    console.log("route",route.params.CustomId);
+export const Game = ({ route }) => {
+    console.log("route", route.params.CustomId);
     const navigation = useNavigation();
     //Giá trị id_user bạn muốn lọc
     const { user, id_user } = useContext(UserContext)
     const [thongBao, setthongBao] = useState(false);
     const [listgame, setlistgame] = useState([]);
     const [game_id, setgame_id] = useState(null);
-    const thongBaoDaChoi = () => {
-        <Text style={{}}>Kết quả của bạn đã được lưu</Text>
-    }
+    const [_data, set_data] = useState(null);
+
     const OnGetGame = async () => {
-        const res = await getGame2(String( route.params.CustomId));
+        const res = await getGame2(String(route.params.CustomId));
         const data = res.game;
         setgame_id(res._id);
         // lay du lieu nguoi da choi
         const resplay = await getPlayedGames(res._id);
-        console.log("resplay", resplay);
+        // set_data(resplay);
+        // console.log("_data", _data);
+        // console.log("resplay", resplay);
         var targetIdUser = id_user;
         const filteredData = resplay.filter(item => item.id_user === targetIdUser);
         // console.log("filteredData", filteredData);
@@ -30,12 +31,6 @@ export const Game = ({route}) => {
             console.log("Sinh viên này đã tham gia");
 
         } else {
-            // lay du lieu tro choi
-            // const res = await getGame();
-            // const data = res[0].game;
-            // const res = await getGame2(String( route.params.CustomId));
-            // const data = res.game;
-            // setgame_id(res._id);
             setlistgame(data)
             console.log("Sinh viên này chưa tham gia");
         }
@@ -73,7 +68,28 @@ export const Game = ({route}) => {
         // setShowResult(false);
 
     };
+    // THỐNG KÊ TOP 3 NGƯỜI CHƠI
+    // const groupedData = _data.reduce((acc, item) => {
+    //     const id_user = item.id_user;
+    //     const diem = parseInt(item.diem); // Chuyển đổi điểm thành số nguyên
 
+    //     if (!acc[id_user]) {
+    //         acc[id_user] = {
+    //             id_user,
+    //             totalDiem: diem,
+    //         };
+    //     } else {
+    //         acc[id_user].totalDiem += diem;
+    //     }
+
+    //     return acc;
+    // }, {});
+    // const leaderboard = Object.values(groupedData);
+    // // Sắp xếp bảng xếp hạng theo điểm giảm dần
+    // leaderboard.sort((a, b) => b.totalDiem - a.totalDiem);
+    // //Chọn 3 người có điểm cao nhất
+    // const top3Players = leaderboard.slice(0, 3);
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     const renderQuestion = () => {
         if (showResult) {
             return (
@@ -96,6 +112,18 @@ export const Game = ({route}) => {
                         fontWeight: 'bold',
                         color: 'black'
                     }}>Kết quả của bạn đã được lưu 🐝</Text>
+                    {/* <Text>Bảng xếp hạng 3 người có điểm cao nhất:</Text> */}
+                    {/* <FlatList
+                        data={top3Players}
+                        keyExtractor={(item) => item.id_user}
+                        renderItem={({ item, index }) => (
+                            <View>
+                                <Text>Người chơi #{index + 1}</Text>
+                                <Text>ID: {item.id_user}</Text>
+                                <Text>Điểm: {item.totalDiem}</Text>
+                            </View>
+                        )}
+                    /> */}
                 </View>
             );
         }

@@ -6,8 +6,6 @@ const PlayMiniGame = () => {
     const [inputText, setInputText] = useState('');
 
     const handleButtonPress = () => {
-        // Xử lý khi người dùng nhấn vào nút ở đây
-        alert(`Bạn đã nhập: ${inputText}`);
         navigation.navigate('Game',{CustomId:inputText});
     }
     return (
